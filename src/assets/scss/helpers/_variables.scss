@@ -1,0 +1,12 @@
+@use "./functions" as *;
+
+$breakpoints: (
+  "3xl": 1680px,
+  "2xl": 1440px,
+  "xl": 1279px,
+  "lg": 1024px,
+  "md": 768px,
+  "sm": 640px,
+  "xs": 475px,
+  "xxs": 355px,
+);
