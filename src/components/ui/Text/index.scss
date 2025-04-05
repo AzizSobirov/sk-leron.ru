@@ -1,7 +1,7 @@
 @use "scss/helpers" as *;
 
 .text-h1 {
-  font-size: rem(50);
+  font-size: rem(80);
   font-weight: 700;
 
   @include media(lg) {
@@ -16,9 +16,10 @@
 }
 
 .text-h2 {
-  color: var(--primary);
-  font-size: rem(44);
-  font-weight: 700;
+  color: inherit;
+  font-size: rem(34);
+  font-family: var(--font-secondary);
+  font-weight: 600;
   line-height: 1.2;
 
   @include media(lg) {
@@ -33,26 +34,29 @@
 }
 
 .text-h3 {
-  color: var(--primary);
-  font-size: rem(24);
+  color: inherit;
+  font-size: rem(26);
   font-weight: 700;
 
   @include media(sm) {
     font-size: rem(20);
+  }
+
+  span:not(.font-regular) {
+    color: var(--primary);
+  }
+
+  span.font-regular {
+    font-weight: 400;
   }
 }
 
 .text-h4 {
   color: var(--primary);
   font-size: rem(20);
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 500;
 
   @include media(sm) {
     font-size: rem(18);
   }
-}
-
-.text-p {
-  font-weight: 300;
 }

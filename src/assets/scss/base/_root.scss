@@ -2,11 +2,12 @@
 
 :root {
   --primary: #f1c40f;
+  --primary-light: #{lighten(#f1c40f, 20)};
   --background: #e4e4e4;
   --text-color: #272727;
   --gray: #888;
   --font-primary: "Roboto", sans-serif;
-  --font-secodanry: "Inter", sans-serif;
+  --font-secondary: "Inter", sans-serif;
   --transition-ease: 0.3s ease;
   --transition-bezier: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   --content-width: #{rem(1540)};

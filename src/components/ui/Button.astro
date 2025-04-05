@@ -38,73 +38,110 @@ const Tag = href ? "a" : "button";
   .btn {
     color: initial;
     font-size: rem(18);
-    font-weight: 500;
+    text-transform: uppercase;
     white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition-ease);
+    overflow: hidden;
 
     &-primary {
-      width: rem(195);
-      height: rem(45);
-      color: #fff;
-      font-size: rem(18);
-      font-weight: 300;
+      position: relative;
+      padding: rem(16) rem(30);
+      color: #333;
+      font-weight: 700;
       background: var(--primary);
       border-radius: 9999px;
       gap: rem(10);
 
-      &:hover {
-        background: var(--secondary);
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: rem(15);
+        height: 100%;
+        background: #fff;
+        animation-delay: 0.05s;
+        animation-timing-function: ease-in-out;
+        transition: all 0.1s;
+        animation-name: slideme;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        transform: skew(-45deg);
       }
 
-      @include media("sm") {
-        height: rem(42);
-        font-size: rem(16);
+      @keyframes slideme {
+        0% {
+          left: -30px;
+          margin-left: 0;
+        }
+        30% {
+          left: 110%;
+          margin-left: 80px;
+        }
+        100% {
+          left: 110%;
+          margin-left: 80px;
+        }
       }
-    }
 
-    &-secondary {
-      height: rem(60);
-      width: rem(264);
-      color: #fff;
-      background: var(--primary);
-      border-radius: 9999px;
-      gap: rem(14);
-
-      svg {
+      .icon {
         transition: var(--transition-ease);
       }
 
       &:hover {
-        color: #fff;
-        background: var(--secondary);
+        background: var(--primary-light);
+        animation-play-state: paused;
 
-        svg {
-          transform: translateX(rem(5));
+        .icon {
+          transform: rotate(-45deg);
         }
       }
-
-      @include media("sm") {
-        width: rem(240);
-        height: rem(56);
-        font-size: rem(16);
-        gap: rem(20);
-      }
     }
 
-    &-outline {
-      height: rem(56);
-      width: rem(220);
-      color: var(--primary);
-      border: rem(1) solid var(--primary);
-      border-radius: 9999px;
+    // &-secondary {
+    //   height: rem(60);
+    //   width: rem(264);
+    //   color: #fff;
+    //   background: var(--primary);
+    //   border-radius: 9999px;
+    //   gap: rem(14);
 
-      &:hover {
-        color: #fff;
-        background: var(--primary);
-      }
-    }
+    //   svg {
+    //     transition: var(--transition-ease);
+    //   }
+
+    //   &:hover {
+    //     color: #fff;
+    //     background: var(--secondary);
+
+    //     svg {
+    //       transform: translateX(rem(5));
+    //     }
+    //   }
+
+    //   @include media("sm") {
+    //     width: rem(240);
+    //     height: rem(56);
+    //     font-size: rem(16);
+    //     gap: rem(20);
+    //   }
+    // }
+
+    // &-outline {
+    //   height: rem(56);
+    //   width: rem(220);
+    //   color: var(--primary);
+    //   border: rem(1) solid var(--primary);
+    //   border-radius: 9999px;
+
+    //   &:hover {
+    //     color: #fff;
+    //     background: var(--primary);
+    //   }
+    // }
   }
 </style>
