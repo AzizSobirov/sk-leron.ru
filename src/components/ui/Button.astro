@@ -46,6 +46,13 @@ const Tag = href ? "a" : "button";
     transition: var(--transition-ease);
     overflow: hidden;
 
+    @include media("lg") {
+      font-size: rem(16);
+    }
+    @include media("xs") {
+      font-size: rem(14);
+    }
+
     &-primary {
       position: relative;
       padding: rem(16) rem(30);
@@ -54,6 +61,15 @@ const Tag = href ? "a" : "button";
       background: var(--primary);
       border-radius: 9999px;
       gap: rem(10);
+      --icon-size: #{rem(22)};
+
+      @include media("xs") {
+        padding: rem(14) rem(25);
+
+        .icon {
+          display: none;
+        }
+      }
 
       &::before {
         content: "";

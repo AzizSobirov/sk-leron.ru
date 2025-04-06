@@ -4,79 +4,30 @@
   position: fixed;
   top: 0;
   left: 0;
+  padding: rem(15) 0;
   width: 100%;
   transition: var(--transition-ease);
   z-index: 10;
 
-  @include media("1280px", min-width) {
-    &.sticky.down {
-      .header__catalog {
-        transform: translateY(rem(-65));
-      }
-    }
+  &.sticky {
+    background: var(--text-color);
   }
-  @include media("1681px", min-width) {
-    &.sticky.down {
-      .header__catalog {
-        transform: translateY(rem(-84));
-      }
-    }
-  }
+
   @include media("xl") {
     position: static;
   }
 
-  &__top {
-    position: relative;
-    z-index: 2;
-    padding: rem(32) 0;
-    width: 100%;
-    background: #fff;
-    --text-color: #003a51;
-
-    @include media("3xl") {
-      padding: rem(15) 0;
-
-      .btn {
-        display: none;
-      }
-    }
-    @include media("xl") {
-      .btn {
-        display: flex;
-      }
-    }
-    @include media("lg") {
-      padding: rem(10) 0;
-      background-color: transparent;
-    }
-    @include media("xs") {
-      .btn {
-        display: none;
-      }
-    }
-
-    .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: rem(20);
-
-      @include media("xs") {
-        justify-content: center;
-      }
-    }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(20);
   }
 
   &__logo {
     position: relative;
-    width: rem(135);
+    width: rem(180);
     display: block;
-
-    @include media("3xl") {
-      min-width: rem(100);
-      width: rem(100);
-    }
 
     img {
       width: 100%;
@@ -86,6 +37,8 @@
   }
 
   &__menu {
+    color: #fff;
+
     @include media("xl") {
       display: none;
     }
@@ -94,116 +47,53 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: rem(40);
+      gap: rem(30);
 
-      @include media("3xl") {
-        gap: rem(60);
-      }
-
-      &-item {
+      & > .menu-item {
         position: relative;
 
         & > a {
-          font-weight: 700;
+          font-size: rem(14);
           transition: var(--transition-ease);
         }
 
-        &.active a,
-        &:hover a {
-          color: var(--primary);
-          border-bottom: rem(1) dashed var(--primary);
-        }
-      }
-    }
-  }
-
-  &__contacts {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: rem(25);
-
-    @include media("lg") {
-      display: none;
-    }
-
-    .group {
-      gap: rem(4);
-
-      @include media("xl") {
-        width: rem(290);
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: rem(4) rem(15);
-      }
-
-      &-city {
-        margin-bottom: rem(8);
-        font-size: rem(18);
-        font-weight: 700;
-
-        @include media("3xl") {
-          margin-bottom: rem(4);
-        }
-      }
-
-      &-address {
-        font-size: rem(12);
-      }
-
-      &-email,
-      &-phone {
-        transition: var(--transition-ease);
-
-        &:hover {
+        &.active > a,
+        &:hover > a {
           color: var(--primary);
         }
       }
-    }
-  }
 
-  &__catalog {
-    width: 100%;
-    background: var(--primary);
-    transition: var(--transition-ease);
+      & > .menu-item.menu-item-has-children {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: rem(8);
 
-    @include media("xl") {
-      display: none;
-    }
-
-    .container {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-    }
-
-    &-item {
-      height: rem(84);
-      --icon-size: #{rem(54)};
-
-      &:nth-child(even) .header__catalog-link {
-        background: var(--secondary);
+        &::before {
+          content: "";
+          display: block;
+          width: 1.2em;
+          height: 1.2em;
+          background: url('data:image/svg+xml,<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.6853 0.458862V7.46216H10.8408V6.29392C7.35448 7.44986 4.84583 10.7394 4.84583 14.6192C4.84583 15.2709 4.91961 15.9104 5.05488 16.5191L6.10015 15.9165L7.02245 17.5152L5.65745 18.3022L1.96212 20.4358L0.959893 21.0138L0.0375977 19.4151L1.24888 18.7142C0.818475 17.4291 0.590976 16.0518 0.590976 14.6192C0.590976 8.37216 4.9811 3.15197 10.8408 1.88535V0.458862H12.6853Z" fill="%23F1C416" /><path d="M27.2947 19.4335L26.3724 21.0322L25.3702 20.4542L21.6749 18.3206L20.3099 17.5336L21.2322 15.935L22.2774 16.5375C22.4127 15.9288 22.4865 15.2894 22.4865 14.6376C22.4865 10.7578 19.9778 7.4683 16.4916 6.31235V7.48059H14.647V0.477295H16.4916V1.90378C22.3512 3.1704 26.7413 8.39059 26.7413 14.6376C26.7413 16.0702 26.5138 17.4475 26.0834 18.7326L27.2947 19.4335Z" fill="%23F1C416" /><path d="M25.6591 22.0652L24.6999 23.6392L23.4518 22.8829C23.421 22.926 23.3841 22.9629 23.3472 23.0059C19.406 27.5252 12.7162 28.8533 7.24395 25.8343C5.98963 25.1456 4.89517 24.2787 3.97902 23.2826C3.91753 23.215 3.8499 23.1473 3.79456 23.0735L3.75767 23.0981L2.57713 23.8544L1.58105 22.2988L2.55869 21.6778L6.14949 19.3782L7.4776 18.5235L8.47368 20.0792L7.45915 20.7309H7.44686C7.53908 20.8293 7.63746 20.9215 7.73584 21.0076C8.20313 21.4196 8.73192 21.7946 9.30374 22.1082C12.6978 23.9835 16.7928 23.3748 19.4859 20.8785C19.572 20.7985 19.658 20.7186 19.7441 20.6325L18.7112 20.0054L19.6703 18.4252L25.6591 22.0652Z" fill="%23F1C416" /></svg>')
+            center/contain no-repeat;
+        }
       }
 
-      @include media("3xl") {
-        height: rem(65);
-        --icon-size: #{rem(40)};
-      }
-    }
+      & > .menu-item.menu-item-has-children > .sub-menu {
+        position: absolute;
+        top: calc(100% + rem(60));
+        left: 0;
+        width: 100%;
+        max-width: rem(780);
 
-    &-link {
-      height: 100%;
-      color: #fff;
-      font-size: rem(18);
-      font-weight: 600;
-      background: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: rem(25);
-
-      @include media("3xl") {
-        font-size: 1rem;
-        gap: rem(20);
+        &::before {
+          content: "";
+          position: absolute;
+          top: rem(-60);
+          left: 0;
+          height: rem(60);
+          width: 100%;
+        }
       }
     }
   }
