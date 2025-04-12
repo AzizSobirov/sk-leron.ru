@@ -1,0 +1,237 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  class?: string;
+}
+
+const { class: classname } = Astro.props;
+---
+
+<!-- Stats -->
+<Section name="stats">
+  <slot name="header" />
+  <div class="stats__list">
+    <div class="stats__item">
+      <div class="stats__item-img">
+        <Image src="stats/1.png" />
+      </div>
+      <div class="stats__item-text">
+        <div class="stats__item-group">
+          <span>от</span>
+          <strong>21</strong>
+        </div>
+        <div class="stats__item-group">
+          <p>от проекта до сдачи объекта, работаем в рекордно сжатые сроки</p>
+          <strong>дня</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats__item">
+      <div class="stats__item-img">
+        <Image src="stats/2.png" />
+      </div>
+      <div class="stats__item-text">
+        <div class="stats__item-group">
+          <span>более</span>
+          <strong>120</strong>
+        </div>
+        <div class="stats__item-group">
+          <p>объектов теплоэнергетики, водоснабжения и инженерных сетей</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats__item">
+      <div class="stats__item-img">
+        <Image src="stats/3.png" />
+      </div>
+      <div class="stats__item-text">
+        <div class="stats__item-group">
+          <span>до</span>
+          <strong>5</strong>
+        </div>
+        <div class="stats__item-group">
+          <p>гарантии на все выполняемые работы</p>
+          <strong>лет</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .stats {
+    position: relative;
+
+    &__list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(20);
+      background-image: url('data:image/svg+xml,<svg width="845" height="837" viewBox="0 0 845 837" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.15" d="M395.524 0V214.508H336.558V183.234C228.252 219.319 150.031 321.561 150.031 441.846C150.031 457.884 151.636 473.922 154.043 489.158L185.331 471.115L214.614 522.036L170.89 547.296L58.1727 612.249L29.2913 629.49L0.00878906 578.57L37.7151 556.918C26.8846 520.432 20.8676 481.941 20.8676 442.247C20.8676 249.792 156.049 89.4117 336.558 49.7177V0H395.524Z" fill="%23E84C3D" /><path opacity="0.15" d="M449.275 0V214.508H508.242V183.234C616.547 219.319 694.768 321.561 694.768 441.846C694.768 457.884 693.163 473.922 690.756 489.158L659.469 471.115L630.186 522.036L673.909 547.296L786.627 612.249L815.509 629.49L844.791 578.57L807.085 556.918C817.915 520.432 823.932 481.941 823.932 442.247C823.932 249.792 688.751 89.4117 508.242 49.7177V0H449.275Z" fill="%23F1C40F" /><path opacity="0.15" d="M787.292 679.609L601.439 572.355L571.956 623.398L599.052 639.035C513.635 714.746 385.94 731.335 281.723 671.192C267.828 663.174 254.734 653.766 242.736 644.064L274.013 626.001L244.536 575.193L200.789 600.412L88.1529 665.507L58.7744 681.887L88.2518 732.695L125.864 710.881C152.061 738.499 182.402 762.953 216.794 782.8C383.541 879.026 590.087 842.202 714.733 705.793L757.809 730.652L787.292 679.609Z" fill="%233598DB" /></svg>');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 55% auto;
+
+      @include media("lg") {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include media("sm") {
+        padding: 0 rem(20);
+        grid-template-columns: 1fr;
+        background-size: 80% auto;
+      }
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      @include media("3xl") {
+        gap: rem(20);
+      }
+      @include media("sm") {
+        gap: rem(10);
+      }
+
+      &:nth-child(1),
+      &:nth-child(3) {
+        .stats__item-group:nth-child(1) {
+          margin-left: 12%;
+
+          @include media("lg") {
+            margin-left: 10%;
+          }
+        }
+        .stats__item-group:nth-child(2) {
+          p {
+            transform: translateY(rem(15));
+
+            @include media("sm") {
+              transform: translateY(rem(10));
+            }
+          }
+        }
+      }
+      &:nth-child(2) {
+        margin-top: rem(200);
+
+        .stats__item-group:nth-child(1) {
+          @include media("sm") {
+            margin-left: 10%;
+          }
+        }
+
+        .stats__item-group:nth-child(2) {
+          p {
+            transform: translateY(rem(-50));
+
+            @include media("md") {
+              transform: translateY(0);
+            }
+            @include media("sm") {
+              transform: translateY(rem(-40));
+            }
+          }
+        }
+
+        @include media("lg") {
+          margin-top: 0;
+        }
+      }
+
+      &-img {
+        width: 100%;
+      }
+
+      &-text {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        gap: rem(20);
+
+        @include media("sm") {
+          gap: rem(10);
+        }
+      }
+
+      &-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        span {
+          font-size: rem(45);
+          line-height: 117%;
+          letter-spacing: -0.04em;
+          color: var(--primary);
+
+          @include media("3xl") {
+            font-size: rem(35);
+          }
+          @include media("lg") {
+            font-size: rem(30);
+          }
+          @include media("md") {
+            font-size: rem(25);
+          }
+        }
+
+        strong {
+          font-weight: 700;
+          font-size: rem(130);
+          line-height: 83%;
+          letter-spacing: 0.01em;
+          color: var(--primary);
+
+          @include media("3xl") {
+            font-size: rem(100);
+          }
+          @include media("lg") {
+            font-size: rem(80);
+          }
+          @include media("md") {
+            font-size: rem(60);
+          }
+        }
+
+        p {
+          font-size: rem(15);
+          line-height: 150%;
+          color: #272727;
+
+          @include media("3xl") {
+            font-size: rem(14);
+          }
+          @include media("xl") {
+            font-size: rem(12);
+          }
+          @include media("xs") {
+            font-size: rem(10);
+          }
+        }
+
+        p + strong {
+          font-size: rem(92);
+          line-height: 117%;
+
+          @include media("3xl") {
+            font-size: rem(75);
+          }
+          @include media("lg") {
+            font-size: rem(60);
+          }
+          @include media("md") {
+            font-size: rem(45);
+          }
+        }
+      }
+    }
+  }
+</style>
