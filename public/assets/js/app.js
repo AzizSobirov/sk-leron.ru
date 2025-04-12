@@ -236,6 +236,30 @@ if (currentYear) {
   currentYear.textContent = new Date().getFullYear();
 }
 
+let statsContentImg = new Swiper(".stats__images", {
+  slidesPerView: 1,
+  effect: "fade",
+});
+
+let statsThumb = new Swiper(".stats__tabs-list", {
+  slidesPerView: "auto",
+  spaceBetween: 15,
+});
+
+let statsThumbContent = new Swiper(".stats__tabs-content", {
+  slidesPerView: 1,
+  effect: "fade",
+  autoHeight: true,
+  thumbs: {
+    swiper: statsThumb,
+  },
+});
+
+// Sync manually when thumb is clicked
+statsThumb.on("click", function () {
+  statsContentImg.slideTo(statsThumb.clickedIndex);
+});
+
 // Initialize the fancybox
 const fancyboxTriggers = Array.from(
   document.querySelectorAll("[data-fancybox]")

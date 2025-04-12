@@ -3,15 +3,19 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 
 interface Props {
   class?: string;
+  main?: boolean;
+  secondary?: boolean;
 }
 
-const { class: classname } = Astro.props;
+const { class: classname, main = false, secondary = false } = Astro.props;
 ---
 
 <!-- Stats -->
 <Section name="stats">
   <slot name="header" />
-  <div class="stats__list">
+  <div
+    class={["stats__list", secondary && "secondary"].filter(Boolean).join(" ")}
+  >
     <div class="stats__item">
       <div class="stats__item-img">
         <Image src="stats/1.png" />
@@ -59,6 +63,144 @@ const { class: classname } = Astro.props;
       </div>
     </div>
   </div>
+
+  {
+    main && (
+      <div class="stats__content">
+        <div class="stats__content-wrapper">
+          <div class="stats__content-group">
+            <div class="stats__content-title">
+              Любую задачу реализуем
+              <span>
+                от проектирования до сдачи <br /> в эксплуатацию
+              </span>
+            </div>
+
+            <div class="stats__tabs">
+              <div class="stats__tabs-list swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">Котельные</div>
+                  <div class="swiper-slide">Сети</div>
+                </div>
+              </div>
+
+              <div class="stats__tabs-content swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="swiper-slide-title">
+                      <span>Газовые котельные от 100 кВт: </span>
+                      <br />
+                      расход газа на 25% ниже, чем у аналогов
+                    </div>
+
+                    <ul class="swiper-slide-list">
+                      <li>Блочные</li>
+                      <li>Модульные</li>
+                      <li>Крышные</li>
+                    </ul>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="swiper-slide-title">
+                      <span> Инженерные сети:</span>
+                      <br />
+                      проектирование, монтаж, ввод в эксплуатацию
+                    </div>
+
+                    <ul class="swiper-slide-list">
+                      <li>газоснабжение</li>
+                      <li>водоснабжение и водоотведение</li>
+                      <li>электроснабжение</li>
+                      <li>кондиционирование и вентиляция</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stats__actions">
+              <Button data-modal="callback">
+                <span>Расчёт</span>
+                <div class="icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <>
+                      <g clip-path="url(#prefix__clip0_66_1580)">
+                        <g clip-path="url(#prefix__clip1_66_1580)">
+                          <>
+                            <mask
+                              id="prefix__a"
+                              style="mask-type:luminance"
+                              maskUnits="userSpaceOnUse"
+                              x="0"
+                              y="0"
+                              width="24"
+                              height="24"
+                            >
+                              <path
+                                d="M23.2.88H.7v22.5h22.5V.88z"
+                                fill="#fff"
+                              />
+                            </mask>
+                            <g mask="url(#prefix__a)" fill="#333">
+                              <>
+                                <path d="M11.95.88C5.747.88.7 5.926.7 12.13c0 6.203 5.047 11.25 11.25 11.25 6.204 0 11.25-5.047 11.25-11.25C23.2 5.926 18.154.88 11.95.88zm0 21.562c-5.686 0-10.312-4.626-10.312-10.312 0-5.686 4.626-10.313 10.312-10.313 5.686 0 10.313 4.627 10.313 10.313 0 5.686-4.627 10.312-10.313 10.312z" />
+                                <path d="M16.645 13.551l.034-3.783a.468.468 0 10-.938-.007l-.034 3.787c0 .248-.016.61-.039.987a1.38 1.38 0 01-.137.516L8.634 8.154a.469.469 0 00-.663.663l6.897 6.897a1.382 1.382 0 01-.517.137c-.376.023-.738.04-.99.04l-3.784.033a.47.47 0 00.008.938l3.779-.034c.262 0 .646-.016 1.043-.04a2.342 2.342 0 002.196-2.196c.024-.398.041-.782.041-1.04l.002-.001z" />
+                              </>
+                            </g>
+                          </>
+                        </g>
+                      </g>
+                      <defs>
+                        <>
+                          <clipPath id="prefix__clip0_66_1580">
+                            <path
+                              fill="#fff"
+                              transform="translate(.7 .88)"
+                              d="M0 0h22.5v22.5H0z"
+                            />
+                          </clipPath>
+                          <clipPath id="prefix__clip1_66_1580">
+                            <path
+                              fill="#fff"
+                              transform="translate(.7 .88)"
+                              d="M0 0h22.5v22.5H0z"
+                            />
+                          </clipPath>
+                        </>
+                      </defs>
+                    </>
+                  </svg>
+                </div>
+              </Button>
+              <p>Закажите расчет стоимости и сроков реализации проекта</p>
+            </div>
+          </div>
+          <div class="stats__content-group">
+            <div class="stats__images swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <Image src="stats/4.png" />
+                </div>
+                <div class="swiper-slide">
+                  <Image src="stats/5.png" />
+                </div>
+              </div>
+
+              <div class="stats__images-box">
+                <a href="#">
+                  Опросный лист <br /> для строительства котельных
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 </Section>
 
 <style lang="scss" is:global>
@@ -68,14 +210,28 @@ const { class: classname } = Astro.props;
     position: relative;
 
     &__list {
+      position: relative;
       width: 100%;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: rem(20);
-      background-image: url('data:image/svg+xml,<svg width="845" height="837" viewBox="0 0 845 837" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.15" d="M395.524 0V214.508H336.558V183.234C228.252 219.319 150.031 321.561 150.031 441.846C150.031 457.884 151.636 473.922 154.043 489.158L185.331 471.115L214.614 522.036L170.89 547.296L58.1727 612.249L29.2913 629.49L0.00878906 578.57L37.7151 556.918C26.8846 520.432 20.8676 481.941 20.8676 442.247C20.8676 249.792 156.049 89.4117 336.558 49.7177V0H395.524Z" fill="%23E84C3D" /><path opacity="0.15" d="M449.275 0V214.508H508.242V183.234C616.547 219.319 694.768 321.561 694.768 441.846C694.768 457.884 693.163 473.922 690.756 489.158L659.469 471.115L630.186 522.036L673.909 547.296L786.627 612.249L815.509 629.49L844.791 578.57L807.085 556.918C817.915 520.432 823.932 481.941 823.932 442.247C823.932 249.792 688.751 89.4117 508.242 49.7177V0H449.275Z" fill="%23F1C40F" /><path opacity="0.15" d="M787.292 679.609L601.439 572.355L571.956 623.398L599.052 639.035C513.635 714.746 385.94 731.335 281.723 671.192C267.828 663.174 254.734 653.766 242.736 644.064L274.013 626.001L244.536 575.193L200.789 600.412L88.1529 665.507L58.7744 681.887L88.2518 732.695L125.864 710.881C152.061 738.499 182.402 762.953 216.794 782.8C383.541 879.026 590.087 842.202 714.733 705.793L757.809 730.652L787.292 679.609Z" fill="%233598DB" /></svg>');
+      background-image: url('data:image/svg+xml,<svg width="845" height="837" viewBox="0 0 845 837" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.1" d="M395.524 0V214.508H336.558V183.234C228.252 219.319 150.031 321.561 150.031 441.846C150.031 457.884 151.636 473.922 154.043 489.158L185.331 471.115L214.614 522.036L170.89 547.296L58.1727 612.249L29.2913 629.49L0.00878906 578.57L37.7151 556.918C26.8846 520.432 20.8676 481.941 20.8676 442.247C20.8676 249.792 156.049 89.4117 336.558 49.7177V0H395.524Z" fill="%23E84C3D" /><path opacity="0.1" d="M449.275 0V214.508H508.242V183.234C616.547 219.319 694.768 321.561 694.768 441.846C694.768 457.884 693.163 473.922 690.756 489.158L659.469 471.115L630.186 522.036L673.909 547.296L786.627 612.249L815.509 629.49L844.791 578.57L807.085 556.918C817.915 520.432 823.932 481.941 823.932 442.247C823.932 249.792 688.751 89.4117 508.242 49.7177V0H449.275Z" fill="%23F1C40F" /><path opacity="0.1" d="M787.292 679.609L601.439 572.355L571.956 623.398L599.052 639.035C513.635 714.746 385.94 731.335 281.723 671.192C267.828 663.174 254.734 653.766 242.736 644.064L274.013 626.001L244.536 575.193L200.789 600.412L88.1529 665.507L58.7744 681.887L88.2518 732.695L125.864 710.881C152.061 738.499 182.402 762.953 216.794 782.8C383.541 879.026 590.087 842.202 714.733 705.793L757.809 730.652L787.292 679.609Z" fill="%233598DB" /></svg>');
       background-position: center;
       background-repeat: no-repeat;
       background-size: 55% auto;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: rem(-200);
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% + rem(200));
+        height: 80%;
+        background: #fff;
+        pointer-events: none;
+        z-index: -1;
+      }
 
       @include media("lg") {
         grid-template-columns: repeat(2, 1fr);
@@ -230,6 +386,228 @@ const { class: classname } = Astro.props;
           @include media("md") {
             font-size: rem(45);
           }
+        }
+      }
+    }
+
+    &__content {
+      position: relative;
+      margin-top: rem(50);
+      padding: rem(84) 0;
+      width: 100%;
+      color: #fff;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% + rem(200));
+        height: 100%;
+        background: #272727 url("/assets/img/bg-stats.png") center/cover
+          no-repeat;
+        clip-path: polygon(
+          calc(100% - rem(80)) 0,
+          100% rem(80),
+          100% 100%,
+          rem(80) 100%,
+          0 calc(100% - rem(80)),
+          0 0
+        );
+        pointer-events: none;
+        z-index: -1;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: rem(75);
+        background: url("/assets/img/vector-bg.png") center/cover no-repeat;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      @include media("3xl") {
+        margin-top: rem(30);
+
+        &::before {
+          width: calc(100% + rem(160));
+        }
+      }
+      @include media("lg") {
+        margin-top: rem(0);
+      }
+
+      &-wrapper {
+        padding-top: rem(20);
+        width: 100%;
+        border-top: rem(1) solid #474747;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: rem(50);
+      }
+
+      &-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(40);
+
+        &:nth-child(1) {
+          max-width: rem(480);
+        }
+        &:nth-child(2) {
+          flex-grow: 1;
+        }
+      }
+
+      &-title {
+        font-family: var(--font-secondary);
+        font-weight: 600;
+        font-size: rem(34);
+        line-height: 120%;
+
+        span {
+          color: var(--primary);
+          display: block;
+        }
+      }
+    }
+
+    &__tabs {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      &-list {
+        width: 100%;
+
+        .swiper-slide {
+          padding: rem(15) rem(24);
+          width: fit-content;
+          color: #c0c0c0;
+          font-weight: 700;
+          border: rem(1) solid currentColor;
+          border-radius: 9999px;
+          cursor: pointer;
+          transition: var(--transition-ease);
+
+          &-thumb-active {
+            color: var(--primary);
+          }
+
+          &:hover {
+            color: var(--text-color);
+            background: var(--primary);
+          }
+        }
+      }
+
+      &-content {
+        width: 100%;
+
+        .swiper-slide {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: rem(24);
+          opacity: 0 !important;
+
+          &-active {
+            opacity: 1 !important;
+          }
+
+          &-title {
+            font-weight: 700;
+            font-size: rem(18);
+            line-height: 130%;
+
+            span {
+              color: var(--primary);
+            }
+          }
+
+          &-list {
+            padding-left: rem(24);
+            width: 100%;
+            list-style: disc;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: rem(8);
+
+            li::marker {
+              color: var(--primary);
+              font-size: 1.5em;
+            }
+          }
+        }
+      }
+    }
+
+    &__actions {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: rem(15);
+
+      .btn {
+        @include media("lg", min-width) {
+          padding: rem(16) rem(40);
+        }
+      }
+
+      p {
+        line-height: 148%;
+        color: #fff;
+      }
+    }
+
+    &__images {
+      position: relative;
+      width: 100%;
+      height: rem(550);
+      display: grid;
+
+      .swiper-wrapper {
+        min-width: 0;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &-box {
+        position: absolute;
+        bottom: 0;
+        right: 10%;
+        z-index: 2;
+        padding: rem(28);
+        line-height: 148%;
+        text-decoration: underline;
+        text-decoration-skip-ink: none;
+        color: #000;
+        background: var(--primary);
+        transition: var(--transition-ease);
+        clip-path: polygon(
+          calc(100% - rem(25)) 0,
+          100% rem(25),
+          100% 100%,
+          0 100%,
+          0 0
+        );
+
+        &:hover {
+          color: #fff;
         }
       }
     }

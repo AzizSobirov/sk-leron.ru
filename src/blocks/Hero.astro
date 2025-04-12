@@ -22,7 +22,7 @@ const { img = "hero/1.png", isMain = false } = Astro.props;
       Разработаем <span>технико-экономическое предложение</span>
       <span class="font-regular">за 48 часов</span>
     </H3>
-    <Button data-modal="form">
+    <Button data-modal="callback">
       <span>Получить</span>
       <div class="icon">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -330,6 +330,7 @@ const { img = "hero/1.png", isMain = false } = Astro.props;
         calc(100% - rem(20)) 0%,
         100% rem(20),
         100% calc(100% - rem(20)),
+        
         calc(100% - rem(20)) 100%,
         rem(20) 100%,
         0% calc(100% - rem(20)),

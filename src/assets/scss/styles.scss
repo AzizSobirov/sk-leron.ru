@@ -17,7 +17,7 @@ section {
   }
 
   @include media("sm") {
-    padding: rem(35) 0;
+    padding: rem(30) 0;
 
     .container {
       gap: rem(25);
