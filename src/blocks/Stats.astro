@@ -437,17 +437,6 @@ const { class: classname, main = false, secondary = false } = Astro.props;
         pointer-events: none;
         z-index: -1;
       }
-      &::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        height: rem(75);
-        background: url("/assets/img/vector-bg.png") center/cover no-repeat;
-        pointer-events: none;
-        z-index: -1;
-      }
 
       @include media("3xl") {
         margin-top: rem(30);
@@ -727,7 +716,7 @@ const { class: classname, main = false, secondary = false } = Astro.props;
           padding: rem(20);
           font-size: rem(14);
         }
-        @include media('sm'){
+        @include media("sm") {
           padding: rem(15);
         }
       }
