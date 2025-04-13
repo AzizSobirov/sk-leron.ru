@@ -118,6 +118,61 @@ const Tag = href ? "a" : "button";
       }
     }
 
+    &-link {
+      position: relative;
+      padding: rem(16) rem(30);
+      color: #333;
+      font-weight: 700;
+      box-shadow: 0 0 rem(52) 0 rgba(0, 0, 0, 0.25);
+      background: #e4e4e4;
+      border: rem(1) solid var(--primary);
+      border-radius: 9999px;
+      gap: rem(10);
+      --icon-size: #{rem(22)};
+
+      @include media("xs") {
+        padding: rem(14) rem(25);
+
+        .icon {
+          display: none;
+        }
+      }
+
+      .icon {
+        transition: var(--transition-ease);
+      }
+
+      &:hover {
+        background: var(--primary-light);
+        animation-play-state: paused;
+
+        .icon {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    &-outline {
+      padding: rem(15) rem(24);
+      color: var(--primary);
+      font-weight: 700;
+      border: rem(1) solid var(--primary);
+      border-radius: 9999px;
+
+      @include media("xl") {
+        font-size: rem(15);
+      }
+      @include media("xs") {
+        padding: rem(12) rem(20);
+        font-size: rem(14);
+      }
+
+      &:hover {
+        color: var(--text-color);
+        background: var(--primary);
+      }
+    }
+
     // &-secondary {
     //   height: rem(60);
     //   width: rem(264);

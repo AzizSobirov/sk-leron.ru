@@ -1,0 +1,257 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Complated Projects -->
+<Section name="complated">
+  <div class="complated__header">
+    <H2>Реализованные проекты</H2>
+    <Button variant="link" href="/projects">
+      <span>Посмотреть все проекты</span>
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+          ><g clip-path="url(#prefix__clip0_66_1580)"
+            ><g clip-path="url(#prefix__clip1_66_1580)"
+              ><mask
+                id="prefix__a"
+                style="mask-type:luminance"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="24"
+                height="24"
+                ><path d="M23.2.88H.7v22.5h22.5V.88z" fill="#fff"></path></mask
+              ><g mask="url(#prefix__a)" fill="#333"
+                ><path
+                  d="M11.95.88C5.747.88.7 5.926.7 12.13c0 6.203 5.047 11.25 11.25 11.25 6.204 0 11.25-5.047 11.25-11.25C23.2 5.926 18.154.88 11.95.88zm0 21.562c-5.686 0-10.312-4.626-10.312-10.312 0-5.686 4.626-10.313 10.312-10.313 5.686 0 10.313 4.627 10.313 10.313 0 5.686-4.627 10.312-10.313 10.312z"
+                ></path><path
+                  d="M16.645 13.551l.034-3.783a.468.468 0 10-.938-.007l-.034 3.787c0 .248-.016.61-.039.987a1.38 1.38 0 01-.137.516L8.634 8.154a.469.469 0 00-.663.663l6.897 6.897a1.382 1.382 0 01-.517.137c-.376.023-.738.04-.99.04l-3.784.033a.47.47 0 00.008.938l3.779-.034c.262 0 .646-.016 1.043-.04a2.342 2.342 0 002.196-2.196c.024-.398.041-.782.041-1.04l.002-.001z"
+                ></path></g
+              ></g
+            ></g
+          ><defs
+            ><clipPath id="prefix__clip0_66_1580"
+              ><path
+                fill="#fff"
+                transform="translate(.7 .88)"
+                d="M0 0h22.5v22.5H0z"></path></clipPath
+            ><clipPath id="prefix__clip1_66_1580"
+              ><path
+                fill="#fff"
+                transform="translate(.7 .88)"
+                d="M0 0h22.5v22.5H0z"></path></clipPath
+            ></defs
+          ></svg
+        >
+      </span>
+    </Button>
+  </div>
+
+  <div class="complated__projects swiper">
+    <div class="swiper-wrapper">
+      {
+        Array.from({ length: 5 }).map(() => (
+          <div class="swiper-slide project">
+            <div class="project__text">
+              <div class="project__text-date">2025</div>
+              <div class="project__text-title">Котельная в г.Чебоксары</div>
+              <p class="project__text-desc">
+                Спроектировали, построили и запустили модульную котельную в
+                г.Чебоксары
+              </p>
+              <Button variant="outline" href="/project">
+                ПОДРОБНЕЕ
+              </Button>
+            </div>
+            <div class="project__img bg-img">
+              <Image src="projects/1.png" />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .complated {
+    position: relative;
+    background: url("/assets/img/complated-bg.png") no-repeat center / cover;
+
+    @include media("3xl", min-width) {
+      padding-block: rem(90);
+    }
+
+    &__header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: rem(60);
+
+      @include media("sm") {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(20);
+      }
+    }
+
+    &__projects {
+      position: relative;
+      margin-top: rem(10);
+      width: 100%;
+      overflow: visible;
+
+      @include media("sm") {
+        margin-top: rem(0);
+      }
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        margin: 0 !important;
+        transform: translateY(-50%);
+        width: rem(50);
+        height: rem(50);
+        background: var(--primary);
+        border-radius: 9999px;
+        --swiper-navigation-size: #{rem(22)};
+        --swiper-navigation-color: #272727;
+        --swiper-navigation-sides-offset: #{rem(40)};
+
+        @include media("xl") {
+          display: none !important;
+        }
+      }
+
+      .swiper-button-prev {
+        display: none;
+      }
+
+      .swiper-slide-next + .swiper-slide,
+      .swiper-slide-prev {
+        opacity: 0.2;
+      }
+    }
+
+    .project {
+      --border-angle: #{rem(25)};
+      position: relative;
+      padding: rem(35) rem(42);
+      min-height: rem(400);
+      width: rem(690);
+      color: #fff;
+      transition: opacity var(--transition-ease);
+      clip-path: polygon(
+        var(--border-angle) 0%,
+        calc(100% - var(--border-angle)) 0%,
+        100% var(--border-angle),
+        100% calc(100% - var(--border-angle)),
+        calc(100% - var(--border-angle)) 100%,
+        var(--border-angle) 100%,
+        0% calc(100% - var(--border-angle)),
+        0% var(--border-angle)
+      );
+
+      @include media("3xl") {
+        min-height: rem(360);
+      }
+      @include media("xl") {
+        min-height: rem(340);
+        width: rem(580);
+      }
+      @include media("lg") {
+        padding: rem(30);
+        min-height: rem(300);
+        width: rem(520);
+      }
+      @include media("sm") {
+        padding: rem(20);
+        width: 90%;
+        min-height: rem(250);
+        --border-angle: #{rem(15)};
+      }
+      @include media("xs") {
+        min-height: rem(200);
+      }
+
+      .bg-img {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to right, #393e43 45%, transparent);
+        }
+
+        img {
+          margin-left: auto;
+          width: 60%;
+        }
+      }
+
+      &__text {
+        width: 100%;
+        max-width: rem(300);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(32);
+
+        @include media("lg") {
+          gap: rem(25);
+        }
+        @include media("sm") {
+          gap: rem(15);
+        }
+
+        &-date {
+          position: relative;
+          color: var(--primary);
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: rem(5);
+
+          @include media("sm") {
+            font-size: rem(14);
+          }
+
+          &::before {
+            content: "";
+            display: inline-block;
+            width: rem(52);
+            height: rem(1);
+            background: currentColor;
+
+            @include media("lg") {
+              width: em(40);
+            }
+          }
+        }
+
+        &-title {
+          font-weight: 600;
+          font-size: rem(20);
+
+          @include media("sm") {
+            font-size: rem(18);
+          }
+        }
+
+        &-desc {
+          @include media("xs") {
+            font-size: rem(14);
+          }
+        }
+      }
+    }
+  }
+</style>

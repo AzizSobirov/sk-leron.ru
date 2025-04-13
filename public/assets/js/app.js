@@ -266,6 +266,21 @@ statsContentImg.on("slideChange", function () {
   statsThumb.slideTo(statsContentImg.activeIndex);
 });
 
+let projectsSwiper = new Swiper(".complated__projects", {
+  slidesPerView: "auto",
+  spaceBetween: 15,
+  navigation: {
+    nextEl: ".complated__projects .swiper-button-next",
+    prevEl: ".complated__projects .swiper-button-prev",
+  },
+  breakpoints: {
+    1280: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+  },
+});
+
 // Initialize the fancybox
 const fancyboxTriggers = Array.from(
   document.querySelectorAll("[data-fancybox]")
