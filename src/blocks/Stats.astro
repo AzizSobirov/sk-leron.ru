@@ -231,10 +231,29 @@ const { class: classname, main = false, secondary = false } = Astro.props;
         background: #fff;
         pointer-events: none;
         z-index: -1;
+        display: none;
       }
 
+      &.secondary::before {
+        display: block;
+      }
+
+      @include media("3xl") {
+        &::before {
+          width: calc(100% + rem(160));
+        }
+      }
+      @include media("2xl") {
+        &::before {
+          width: 100vw;
+        }
+      }
       @include media("lg") {
         grid-template-columns: repeat(2, 1fr);
+
+        &::before {
+          height: 95%;
+        }
       }
       @include media("sm") {
         padding: 0 rem(20);
@@ -437,8 +456,39 @@ const { class: classname, main = false, secondary = false } = Astro.props;
           width: calc(100% + rem(160));
         }
       }
+      @include media("2xl") {
+        &::before {
+          width: 100vw;
+        }
+      }
       @include media("lg") {
         margin-top: rem(0);
+        padding: rem(60) 0;
+
+        &::before {
+          clip-path: polygon(
+            calc(100% - rem(60)) 0,
+            100% rem(60),
+            100% 100%,
+            rem(60) 100%,
+            0 calc(100% - rem(60)),
+            0 0
+          );
+        }
+      }
+      @include media("sm") {
+        padding: rem(40) 0;
+
+        &::before {
+          clip-path: polygon(
+            calc(100% - rem(30)) 0,
+            100% rem(30),
+            100% 100%,
+            rem(30) 100%,
+            0 calc(100% - rem(30)),
+            0 0
+          );
+        }
       }
 
       &-wrapper {
@@ -449,6 +499,13 @@ const { class: classname, main = false, secondary = false } = Astro.props;
         align-items: flex-start;
         justify-content: flex-start;
         gap: rem(50);
+
+        @include media("xl") {
+          gap: rem(30);
+        }
+        @include media("lg") {
+          flex-direction: column;
+        }
       }
 
       &-group {
@@ -457,8 +514,19 @@ const { class: classname, main = false, secondary = false } = Astro.props;
         align-items: flex-start;
         gap: rem(40);
 
+        @include media("sm") {
+          gap: rem(25);
+        }
+
         &:nth-child(1) {
           max-width: rem(480);
+
+          @include media("xl") {
+            max-width: rem(380);
+          }
+          @include media("lg") {
+            max-width: 100%;
+          }
         }
         &:nth-child(2) {
           flex-grow: 1;
@@ -475,6 +543,17 @@ const { class: classname, main = false, secondary = false } = Astro.props;
           color: var(--primary);
           display: block;
         }
+
+        @include media("xl") {
+          font-size: rem(28);
+
+          br {
+            display: none;
+          }
+        }
+        @include media("md") {
+          font-size: rem(24);
+        }
       }
     }
 
@@ -484,6 +563,10 @@ const { class: classname, main = false, secondary = false } = Astro.props;
       flex-direction: column;
       align-items: flex-start;
       gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(24);
+      }
 
       &-list {
         width: 100%;
@@ -497,6 +580,11 @@ const { class: classname, main = false, secondary = false } = Astro.props;
           border-radius: 9999px;
           cursor: pointer;
           transition: var(--transition-ease);
+
+          @include media("sm") {
+            padding: rem(10) rem(20);
+            font-size: rem(14);
+          }
 
           &-thumb-active {
             color: var(--primary);
@@ -519,6 +607,10 @@ const { class: classname, main = false, secondary = false } = Astro.props;
           gap: rem(24);
           opacity: 0 !important;
 
+          @include media("sm") {
+            gap: rem(16);
+          }
+
           &-active {
             opacity: 1 !important;
           }
@@ -530,6 +622,10 @@ const { class: classname, main = false, secondary = false } = Astro.props;
 
             span {
               color: var(--primary);
+            }
+
+            @include media("sm") {
+              font-size: rem(16);
             }
           }
 
@@ -567,6 +663,13 @@ const { class: classname, main = false, secondary = false } = Astro.props;
       p {
         line-height: 148%;
         color: #fff;
+
+        @include media("xl") {
+          font-size: rem(14);
+        }
+        @include media("sm") {
+          font-size: rem(12);
+        }
       }
     }
 
@@ -575,6 +678,16 @@ const { class: classname, main = false, secondary = false } = Astro.props;
       width: 100%;
       height: rem(550);
       display: grid;
+
+      @include media("xl") {
+        height: rem(500);
+      }
+      @include media("sm") {
+        height: rem(320);
+      }
+      @include media("xs") {
+        height: rem(280);
+      }
 
       .swiper-wrapper {
         min-width: 0;
@@ -608,6 +721,14 @@ const { class: classname, main = false, secondary = false } = Astro.props;
 
         &:hover {
           color: #fff;
+        }
+
+        @include media("xl") {
+          padding: rem(20);
+          font-size: rem(14);
+        }
+        @include media('sm'){
+          padding: rem(15);
         }
       }
     }

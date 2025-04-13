@@ -239,6 +239,7 @@ if (currentYear) {
 let statsContentImg = new Swiper(".stats__images", {
   slidesPerView: 1,
   effect: "fade",
+  allowTouchMove: false,
 });
 
 let statsThumb = new Swiper(".stats__tabs-list", {
@@ -250,6 +251,7 @@ let statsThumbContent = new Swiper(".stats__tabs-content", {
   slidesPerView: 1,
   effect: "fade",
   autoHeight: true,
+  allowTouchMove: false,
   thumbs: {
     swiper: statsThumb,
   },
@@ -258,6 +260,10 @@ let statsThumbContent = new Swiper(".stats__tabs-content", {
 // Sync manually when thumb is clicked
 statsThumb.on("click", function () {
   statsContentImg.slideTo(statsThumb.clickedIndex);
+});
+
+statsContentImg.on("slideChange", function () {
+  statsThumb.slideTo(statsContentImg.activeIndex);
 });
 
 // Initialize the fancybox
