@@ -22,15 +22,20 @@
   font-weight: 600;
   line-height: 1.2;
 
-  @include media(lg) {
+  @include media("3xl") {
+    font-size: rem(32);
+  }
+  @include media("xl") {
     font-size: rem(28);
   }
   @include media(xs) {
     font-size: rem(24);
   }
 
-  span {
+  span,
+  strong {
     color: var(--primary);
+    font-weight: inherit;
   }
 }
 

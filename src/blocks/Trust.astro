@@ -101,7 +101,7 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 
     &__content {
       margin-top: rem(40);
-      padding-top: rem(40);
+      padding-block: rem(40);
       width: 100%;
       color: #fff;
       border-top: rem(1) solid #474747;
@@ -111,7 +111,7 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 
       @include media("xl") {
         margin-top: rem(20);
-        padding-top: rem(20);
+        padding-block: rem(20);
         grid-template-columns: repeat(2, 1fr);
       }
       @include media("lg") {
@@ -119,12 +119,6 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
       }
       @include media("sm") {
         grid-template-columns: 1fr;
-      }
-
-      &-title {
-        @media screen and (min-width: 1280px) and (max-width: 1680px) {
-          font-size: rem(32);
-        }
       }
 
       &-desc {
