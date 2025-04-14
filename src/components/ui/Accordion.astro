@@ -12,20 +12,7 @@ const { title } = Astro.props;
 <div class="accordion">
   <div class="accordion__header">
     <div class="accordion__header-title">{title}</div>
-    <div class="accordion__header-icon icon">
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 40 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle cx="20" cy="20" r="19.5" stroke="currentColor"></circle>
-        <path
-          d="M28.0282 20.6034C28.2234 20.4081 28.2234 20.0915 28.0282 19.8963L24.8462 16.7143C24.6509 16.519 24.3343 16.519 24.1391 16.7143C23.9438 16.9095 23.9438 17.2261 24.1391 17.4214L26.9675 20.2498L24.1391 23.0782C23.9438 23.2735 23.9438 23.5901 24.1391 23.7854C24.3343 23.9806 24.6509 23.9806 24.8462 23.7854L28.0282 20.6034ZM12.8254 20.7498H27.6746L27.6746 19.7498H12.8254L12.8254 20.7498Z"
-          fill="currentColor"></path>
-      </svg>
-    </div>
+    <div class="accordion__header-icon icon"></div>
   </div>
   <div class="accordion__body">
     <div class="accordion__content">
@@ -41,42 +28,24 @@ const { title } = Astro.props;
   .accordion {
     width: 100%;
 
-    &:not(:first-child) {
-      border-top: rem(1) solid var(--text-color);
-    }
-
-    &:last-child {
-      border-bottom: rem(1) solid var(--text-color);
-    }
-
     &__header {
       position: relative;
-      padding: rem(18) 0;
       width: 100%;
       cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: rem(20);
+      justify-content: flex-start;
+      gap: rem(12);
 
-      @include media("sm") {
-        padding: rem(15) 0;
-      }
-      @include media("xs") {
-        padding: rem(12) 0;
+      @include media("lg") {
+        justify-content: space-between;
       }
 
       &-title {
-        color: inherit;
-        font-size: rem(30);
-        font-weight: 300;
+        color: var(--primary);
+        font-size: rem(20);
+        font-weight: 500;
 
-        @include media("3xl") {
-          font-size: rem(28);
-        }
-        @include media("xl") {
-          font-size: rem(24);
-        }
         @include media("sm") {
           font-size: rem(18);
         }
@@ -84,9 +53,10 @@ const { title } = Astro.props;
 
       &-icon {
         color: inherit;
-        transform: rotate(-45deg);
+        background: url('data:image/svg+xml,<svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_70_1319)"><mask id="mask0_70_1319" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="29" height="29"><path d="M28.2847 14.1421L14.1426 0L0.000442743 14.1421L14.1426 28.2843L28.2847 14.1421Z" fill="white" /></mask><g mask="url(%23mask0_70_1319)"><path d="M21.2136 7.07107C17.3145 3.17196 10.9706 3.17196 7.07151 7.07107C3.17241 10.9702 3.17241 17.3141 7.07151 21.2132C10.9706 25.1123 17.3145 25.1123 21.2136 21.2132C25.1128 17.3141 25.1128 10.9702 21.2136 7.07107ZM7.66077 20.6239C4.08693 17.0501 4.08693 11.2342 7.66077 7.66032C11.2346 4.08649 17.0506 4.08649 20.6244 7.66032C24.1982 11.2342 24.1982 17.0501 20.6244 20.6239C17.0506 24.1978 11.2346 24.1978 7.66077 20.6239Z" fill="%23F1C40F" /><path d="M16.2007 17.9869L18.5998 15.6302C18.7639 15.4685 18.7665 15.2052 18.6048 15.041C18.4432 14.8769 18.1798 14.8744 18.0148 15.0361L15.6131 17.3952C15.4573 17.5511 15.219 17.7685 14.9681 17.9911C14.8448 18.1003 14.7048 18.1777 14.5573 18.2294L14.5573 9.55938C14.5573 9.32938 14.3706 9.14272 14.1406 9.14272C13.9106 9.14271 13.724 9.32938 13.724 9.55938L13.724 18.2294C13.5765 18.1769 13.4365 18.1003 13.3131 17.9902C13.0623 17.7685 12.8239 17.551 12.6656 17.3927L10.2664 15.0361C10.1023 14.8744 9.83811 14.8769 9.67643 15.0411C9.59731 15.1227 9.55727 15.2277 9.55727 15.3336C9.55728 15.4411 9.59899 15.5494 9.68148 15.6302L12.0781 17.9844C12.2431 18.1494 12.4948 18.3802 12.7598 18.6144C13.5464 19.3119 14.7331 19.3118 15.5198 18.6144C15.7848 18.3794 16.0373 18.1485 16.199 17.9868L16.2007 17.9869Z" fill="%23F1C40F" /></g></g><defs><clipPath id="clip0_70_1319"><rect width="20" height="20" fill="white" transform="translate(14.1426) rotate(45)" /></clipPath></defs></svg>')
+          center/contain no-repeat;
         transition: var(--transition-ease);
-        --icon-size: #{rem(40)};
+        --icon-size: #{rem(30)};
 
         @include media("sm") {
           --icon-size: #{rem(32)};
@@ -94,10 +64,8 @@ const { title } = Astro.props;
       }
 
       &[data-state="opened"] {
-        border-bottom: rem(1) solid var(--text-color);
-
         .icon {
-          transform: rotate(90deg);
+          transform: rotate(180deg);
         }
       }
     }
@@ -109,16 +77,12 @@ const { title } = Astro.props;
     }
 
     &__content {
-      padding: rem(28) 0 rem(38);
+      padding: rem(20) 0;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: rem(20);
-
-      @include media("sm") {
-        padding: rem(20) 0 rem(30);
-      }
 
       ul {
         padding-left: 24px;

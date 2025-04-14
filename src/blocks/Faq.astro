@@ -1,0 +1,290 @@
+---
+import { Section, H2, H3, P, BgImg, Image, Icon, Button, Accordion } from "ui";
+---
+
+<!-- Faq -->
+<Section name="faq">
+  <BgImg src="faq-bg.png" />
+
+  <div class="faq__content">
+    <H3 class="faq__content-title">
+      <strong>ОТВЕЧАЕМ</strong> НА ЧАСТЫЕ ВОПРОСЫ
+    </H3>
+
+    <div class="faq__list" data-accordion>
+      {
+        Array.from({ length: 8 }).map(() => (
+          <Accordion title="Какие сроки выполнения проекта?">
+            Стандартные сроки реализации проекта варьируются в зависимости от
+            его сложности и поставленных задач. Более подробную оценку сроков
+            реализации мы можем предоставить только при тесном обсуждении
+            задачи.
+          </Accordion>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="faq__img">
+    <Image src="faq-img.png" />
+  </div>
+
+  <div class="faq__contact">
+    <div class="faq__contact-title">Не нашли ответа на свой вопрос?</div>
+    <p class="faq__contact-desc">
+      Свяжитесь с нами по телефону или оставив заявку, наши <br />
+      менеджеры ответят на все интересующие Вас вопросы.
+    </p>
+    <div class="faq__contact-group">
+      <div class="faq__contact-phones">
+        <a title="Телефон" target="_blank" href="tel:+79003330072">
+          +7 (900) 333-00-72
+        </a>
+        <a title="Телефон" target="_blank" href="tel:+7835209663">
+          +7 (8352) 709-663
+        </a>
+      </div>
+      <button class="faq__contact-callback" data-modal="callback">
+        Задать вопрос
+      </button>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .faq {
+    position: relative;
+
+    @include media("3xl", min-width) {
+      padding-block: rem(90);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: rem(-120);
+      left: 50%;
+      transform: translateX(-109.4%);
+      height: rem(190);
+      width: rem(706);
+      background: url("/assets/img/pattern.png") center/contain no-repeat;
+
+      @include media("lg") {
+        top: rem(-170);
+        left: 0;
+        transform: translateX(0);
+      }
+      @include media("sm") {
+        top: rem(-180);
+      }
+    }
+
+    .bg-img {
+      background: #32373d;
+
+      @include media("lg") {
+        img {
+          object-position: right;
+        }
+      }
+    }
+
+    &__content {
+      margin-top: rem(60);
+      width: 100%;
+      max-width: rem(630);
+      color: #fff;
+
+      @include media("3xl") {
+        max-width: rem(580);
+      }
+      @include media("xl") {
+        max-width: rem(500);
+      }
+      @include media("lg") {
+        margin-top: rem(0);
+        max-width: 100%;
+      }
+
+      &-title {
+        padding-bottom: rem(12);
+        font-weight: 500;
+        font-size: куь;
+        line-height: 94%;
+        border-bottom: rem(1) solid #474747;
+      }
+    }
+
+    &__list {
+      margin-top: rem(60);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(20);
+
+      @include media("3xl") {
+        margin-top: rem(40);
+      }
+      @include media("lg") {
+        margin-top: rem(20);
+      }
+      @include media("sm") {
+        gap: rem(15);
+      }
+    }
+
+    &__img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(calc(-20%));
+      width: rem(420);
+
+      @include media("3xl") {
+        width: rem(360);
+      }
+      @include media("xl") {
+        transform: translateX(0);
+        width: rem(320);
+      }
+      @include media("lg") {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &__contact {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(55%);
+      padding: rem(38) rem(120) rem(38) rem(38);
+      background: var(--primary);
+      --border-angle: #{rem(30)};
+      clip-path: polygon(
+        calc(100% - var(--border-angle) * 2) 0,
+        100% var(--border-angle),
+        100% 100%,
+        0 100%,
+        0 0
+      );
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(12);
+
+      @include media("3xl") {
+        transform: translateX(30%);
+        padding: rem(30) rem(80) rem(30) rem(30);
+      }
+      @include media("2xl") {
+        left: auto;
+        right: 4vw;
+        transform: translateX(0);
+      }
+      @include media("xl") {
+        padding: rem(20) rem(40) rem(20) rem(20);
+        --border-angle: #{rem(20)};
+      }
+      @include media("lg") {
+        position: relative;
+        right: 0;
+        width: 100%;
+      }
+
+      &-title {
+        font-weight: 700;
+        font-size: rem(24);
+        line-height: 98%;
+        text-transform: uppercase;
+
+        @include media("xl") {
+          font-size: rem(20);
+        }
+      }
+
+      &-desc {
+        @include media("xl") {
+          font-size: rem(14);
+        }
+      }
+
+      &-group {
+        margin-top: rem(8);
+        white-space: nowrap;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: rem(40);
+
+        @include media("xl") {
+          margin-top: rem(4);
+        }
+        @include media("xs") {
+          gap: rem(10) rem(30);
+        }
+        @include media("xxs") {
+          flex-direction: column;
+        }
+      }
+
+      &-phones {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        a {
+          font-weight: 700;
+          font-size: rem(18);
+          line-height: 150%;
+          text-align: right;
+
+          @include media("xs") {
+            font-size: rem(16);
+          }
+
+          &:last-child {
+            font-size: 1rem;
+
+            @include media("xs") {
+              font-size: rem(14);
+            }
+          }
+        }
+      }
+
+      &-callback {
+        position: relative;
+        font-size: 14px;
+        line-height: 145%;
+        border-bottom: rem(1) dashed currentColor;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(5);
+
+        @include media("xxs") {
+          margin-left: rem(10);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translate(-200%, -50%);
+          width: rem(6);
+          height: rem(6);
+          background: currentColor;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+</style>

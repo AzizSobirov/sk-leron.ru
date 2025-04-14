@@ -61,6 +61,11 @@
   span.font-regular {
     font-weight: 400;
   }
+
+  strong {
+    color: var(--primary);
+    font-weight: inherit;
+  }
 }
 
 .text-h4 {

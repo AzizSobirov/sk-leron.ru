@@ -230,6 +230,44 @@ if (header) {
   });
 }
 
+// Accordions
+const getAccordionParents = document.querySelectorAll("[data-accordion");
+getAccordionParents.forEach((parent) => {
+  const isMultiple = parent.dataset.multiple;
+  const accordions = parent.querySelectorAll(".accordion");
+  accordions.forEach((accordion, index, arr) => {
+    const header = accordion.querySelector(".accordion__header");
+    const body = accordion.querySelector(".accordion__body");
+    const content = accordion.querySelector(".accordion__content");
+
+    header.addEventListener("click", () => {
+      const isActive = accordion.classList.contains("active");
+
+      if (!isActive) {
+        accordion.classList.add("active");
+        header.dataset.state = "opened";
+        body.style.maxHeight = content.scrollHeight + "px";
+      } else {
+        accordion.classList.remove("active");
+        header.dataset.state = "closed";
+        body.style.maxHeight = 0;
+      }
+
+      if (!isMultiple || isMultiple == "false") {
+        arr.forEach((el) => {
+          const header = el.querySelector(".accordion__header");
+
+          if (el !== accordion) {
+            el.classList.remove("active");
+            header.dataset.state = "closed";
+            el.querySelector(".accordion__body").style.maxHeight = 0;
+          }
+        });
+      }
+    });
+  });
+});
+
 // Footer
 const currentYear = document.getElementById("current-year");
 if (currentYear) {
