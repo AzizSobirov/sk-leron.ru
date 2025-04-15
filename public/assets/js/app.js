@@ -319,6 +319,34 @@ let projectsSwiper = new Swiper(".complated__projects", {
   },
 });
 
+let partnersSwiper = new Swiper(".partners__list", {
+  slidesPerView: 2,
+  initialSlide: 1,
+  loop: true,
+  allowTouchMove: false,
+  autoplay: {
+    enabled: true,
+    delay: 0,
+    pauseOnMouseEnter: false,
+    disableOnInteraction: true,
+  },
+  speed: 8000,
+  breakpoints: {
+    476: {
+      slidesPerView: 2,
+    },
+    641: {
+      slidesPerView: 3,
+    },
+    1025: {
+      slidesPerView: 4,
+    },
+    1680: {
+      slidesPerView: 5,
+    },
+  },
+});
+
 // Initialize the fancybox
 const fancyboxTriggers = Array.from(
   document.querySelectorAll("[data-fancybox]")

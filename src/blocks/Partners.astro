@@ -1,0 +1,127 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Partners -->
+<Section name="partners">
+  <H2>Среди Заказчиков и Партнеров </H2>
+
+  <div class="partners__list swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <Image src="partners/gazprom.webp" />
+      </div>
+      <div class="swiper-slide">
+        <Image src="partners/Group-39430.webp" />
+      </div>
+      <div class="swiper-slide">
+        <Image src="partners/Group-39556.webp" />
+      </div>
+      <div class="swiper-slide">
+        <Image src="partners/image-121.webp" />
+      </div>
+      <div class="swiper-slide">
+        <Image src="partners/image-128.webp" />
+      </div>
+      <div class="swiper-slide">
+        <Image src="partners/image-129.webp" />
+      </div>
+      <div class="swiper-slide">
+        <Image src="partners/gazprom.webp" />
+      </div>
+      <div class="swiper-slide">
+        <Image src="partners/Group-39430.webp" />
+      </div>
+      <div class="swiper-slide">
+        <Image src="partners/Group-39556.webp" />
+      </div>
+      <div class="swiper-slide">
+        <Image src="partners/image-121.webp" />
+      </div>
+      <div class="swiper-slide">
+        <Image src="partners/image-128.webp" />
+      </div>
+      <div class="swiper-slide">
+        <Image src="partners/image-129.webp" />
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .partners {
+    position: relative;
+
+    .container {
+      align-items: center;
+
+      @include media("sm") {
+        text-align: center;
+      }
+    }
+
+    &__list {
+      height: rem(218);
+      width: 100%;
+      overflow: visible;
+
+      @include media("xl") {
+        height: rem(180);
+      }
+      @include media("xs") {
+        height: rem(100);
+      }
+
+      .swiper-slide {
+        position: relative;
+        height: 100%;
+        background: rgba(175, 175, 175, 0.8);
+        --border-angle: #{rem(20)};
+        clip-path: polygon(
+          var(--border-angle) 0%,
+          calc(100% - var(--border-angle)) 0%,
+          100% var(--border-angle),
+          100% calc(100% - var(--border-angle)),
+          calc(100% - var(--border-angle)) 100%,
+          var(--border-angle) 100%,
+          0% calc(100% - var(--border-angle)),
+          0% var(--border-angle)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include media("xs") {
+          --border-angle: #{rem(10)};
+        }
+
+        &::before {
+          content: "";
+          @include center;
+          width: calc(100% - rem(2));
+          height: calc(100% - rem(2));
+          background: #c9c9c9;
+          clip-path: inherit;
+
+          @include media("sm") {
+            background: #fff;
+          }
+        }
+
+        img {
+          position: relative;
+          max-height: calc(100% - rem(50));
+          max-width: calc(100% - rem(30));
+          object-fit: contain;
+
+          @include media("xs") {
+            max-height: calc(100% - rem(30));
+            max-width: calc(100% - rem(30));
+          }
+        }
+      }
+    }
+  }
+</style>
