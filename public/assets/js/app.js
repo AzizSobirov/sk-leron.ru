@@ -347,6 +347,23 @@ let partnersSwiper = new Swiper(".partners__list", {
   },
 });
 
+let lettersSwiper = new Swiper(".letters__list", {
+  slidesPerView: "auto",
+  spaceBetween: 15,
+  navigation: {
+    nextEl: ".letters__nav .swiper-button-next",
+    prevEl: ".letters__nav .swiper-button-prev",
+  },
+  breakpoints: {
+    641: {
+      slidesPerView: 2,
+    },
+    1025: {
+      slidesPerView: 3,
+    },
+  },
+});
+
 // Initialize the fancybox
 const fancyboxTriggers = Array.from(
   document.querySelectorAll("[data-fancybox]")

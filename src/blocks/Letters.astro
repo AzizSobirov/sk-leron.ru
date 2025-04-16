@@ -1,0 +1,268 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Letters -->
+<Section name="letters">
+  <div class="letters__content">
+    <div class="letters__text">
+      <H2>Письма благодарности</H2>
+      <div class="letters__nav">
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+
+    <div class="letters__list swiper">
+      <div class="swiper-wrapper">
+        {
+          Array.from({ length: 5 }).map((_, index) => (
+            <div class="swiper-slide">
+              <div
+                class="swiper-slide-img"
+                data-fancybox="letters"
+                data-src={`/assets/img/letters/${index + 1}.jpg`}
+              >
+                <Image src={`letters/${index + 1}.jpg`} />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .letters {
+    position: relative;
+    background: #32373d;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: rem(1190);
+      height: rem(632);
+      background: url("/assets/img/letters-bg-2.png") center/cover no-repeat;
+
+      @include media("3xl") {
+        width: 60%;
+        height: 120%;
+      }
+      @include media("xl") {
+        width: 60%;
+        height: 50%;
+      }
+      @include media("sm") {
+        width: 80%;
+        height: 35%;
+      }
+    }
+
+    &__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(40) rem(20);
+
+      @include media("xl") {
+        position: static;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: rem(40);
+        left: rem(140);
+        width: rem(400);
+        height: rem(375);
+        background: url("/assets/img/letters-bg.png") center/cover no-repeat;
+        pointer-events: none;
+
+        @include media("3xl") {
+          width: 25%;
+          height: 110%;
+        }
+        @include media("xl") {
+          top: 50%;
+          left: 0;
+          transform: translate(-50%, -50%);
+          width: 30%;
+          height: 90%;
+          background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="399" height="677" viewBox="0 0 399 677" fill="none"><rect width="399" height="677" fill="url(%23pattern0_450_1175)" fill-opacity="0.25"/><defs><pattern id="pattern0_450_1175" patternContentUnits="objectBoundingBox" width="0.0300752" height="0.0177253"><use xlink:href="%23image0_450_1175" transform="scale(0.00250627 0.0014771)"/></pattern><image id="image0_450_1175" width="12" height="12" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA2SURBVHgB7ZGxDQAwCMPay0vPynVtQBwQNgaQLBYnS/YSDsDhM3IlmTxiIzeRMyDLsXhF9vIP4axhIo/h/UAAAAAASUVORK5CYII="/></defs></svg>');
+        }
+        @include media("sm") {
+          width: rem(80);
+          height: 95%;
+          transform: translate(0%, -50%);
+        }
+      }
+    }
+
+    &__text {
+      position: relative;
+      margin: rem(120) 0;
+      width: 100%;
+      max-width: rem(400);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(30);
+
+      @include media("3xl") {
+        margin: rem(80) 0;
+      }
+      @include media("xl") {
+        margin: 0;
+      }
+      @include media("sm") {
+        gap: rem(25);
+      }
+    }
+
+    &__nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: rem(34);
+
+      @include media("3xl") {
+        gap: rem(25);
+      }
+      @include media("sm") {
+        gap: rem(25);
+      }
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        position: static;
+        margin: 0 !important;
+        width: rem(50);
+        height: rem(50);
+        background: var(--primary);
+        border-radius: 9999px;
+        --swiper-navigation-size: #{rem(22)};
+        --swiper-navigation-color: #272727;
+        --swiper-navigation-sides-offset: 0;
+
+        @include media("sm") {
+          width: rem(45);
+          height: rem(45);
+          --swiper-navigation-size: #{rem(20)};
+        }
+      }
+
+      .swiper-button-disabled {
+        background: #747474;
+        opacity: 1;
+      }
+    }
+
+    &__list {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: rem(475);
+      width: 100%;
+      max-width: rem(1040);
+      display: grid;
+
+      @include media("3xl") {
+        top: rem(-80);
+        max-width: rem(880);
+      }
+      @include media("xl") {
+        position: relative;
+        top: 0;
+        max-width: 100%;
+      }
+      @include media("lg") {
+        height: rem(520);
+      }
+
+      @include media("sm") {
+        height: rem(460);
+        overflow: visible;
+      }
+
+      .swiper-wrapper {
+        min-width: 0 !important;
+      }
+
+      .swiper-slide {
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+
+        @include media("sm") {
+          width: 90%;
+          align-items: center;
+        }
+      }
+
+      .swiper-slide-img {
+        position: relative;
+        padding: rem(1);
+        --border-angle: #{rem(50)};
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--border-angle)) 0%,
+          100% var(--border-angle),
+          100% 100%,
+          var(--border-angle) 100%,
+          0 calc(100% - var(--border-angle))
+        );
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: var(--primary);
+          clip-path: inherit;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          background-image: url('data:image/svg+xml,<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.599 14.7728H19.349M14.974 10.3978V19.1478M31.0156 30.8145L22.2656 22.0645M4.76563 14.7728C4.76562 16.1134 5.02967 17.4408 5.54269 18.6793C6.05571 19.9179 6.80765 21.0432 7.75558 21.9912C8.70351 22.9391 9.82887 23.691 11.0674 24.2041C12.3059 24.7171 13.6334 24.9811 14.974 24.9811C16.3145 24.9811 17.642 24.7171 18.8805 24.2041C20.1191 23.691 21.2444 22.9391 22.1923 21.9912C23.1403 21.0432 23.8922 19.9179 24.4052 18.6793C24.9182 17.4408 25.1823 16.1134 25.1823 14.7728C25.1823 13.4322 24.9182 12.1048 24.4052 10.8662C23.8922 9.62769 23.1403 8.50234 22.1923 7.5544C21.2444 6.60647 20.1191 5.85453 18.8805 5.34152C17.642 4.8285 16.3145 4.56445 14.974 4.56445C13.6334 4.56445 12.3059 4.8285 11.0674 5.34152C9.82887 5.85453 8.70351 6.60647 7.75558 7.5544C6.80765 8.50234 6.05571 9.62769 5.54269 10.8662C5.02967 12.1048 4.76562 13.4322 4.76563 14.7728Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>');
+          background-size: rem(32) auto;
+          background-repeat: no-repeat;
+          background-position: center;
+          cursor: pointer;
+          opacity: 0;
+          transition: var(--transition-ease);
+        }
+
+        &:hover::after {
+          opacity: 1;
+        }
+      }
+
+      img {
+        position: relative;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+</style>
