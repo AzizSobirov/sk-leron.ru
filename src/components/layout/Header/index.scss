@@ -349,7 +349,7 @@
     padding: rem(6) rem(18) rem(6) rem(6);
     width: 100%;
     height: rem(48);
-    background: #fff;
+    background: var(--text-color);
     border-radius: rem(15);
     box-shadow: 0 0 rem(10) 0 rgba(0, 0, 0, 0.25);
     display: flex;
@@ -379,9 +379,9 @@
 
       span {
         margin-top: 0;
-        color: #fff;
+        margin-bottom: rem(2);
+        color: var(--text-color);
         font-size: rem(14);
-        line-height: auto;
       }
     }
 
@@ -398,7 +398,7 @@
 
     span {
       margin-top: rem(2);
-      color: #5c5c5c;
+      color: #fff;
       font-size: rem(13);
       text-align: center;
     }
@@ -410,7 +410,7 @@
       max-height: 0;
       backdrop-filter: blur(rem(6));
       box-shadow: 0 0 rem(4) 0 rgba(0, 0, 0, 0.25);
-      background: rgba(255, 255, 255, 0.5);
+      background: #272727;
       border-radius: rem(20);
       gap: rem(12);
       transition: var(--transition-ease);
@@ -434,7 +434,7 @@
     width: 100%;
     min-height: rem(345);
     color: #fff;
-    background: var(--primary);
+    background: var(--text-color);
     border-radius: rem(15);
     display: none;
     align-items: center;

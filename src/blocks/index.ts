@@ -1,7 +1,9 @@
+export { default as Application } from "./Application.astro";
 export { default as Certificates } from "./Certificates.astro";
 export { default as Complated } from "./Complated.astro";
 export { default as Cycle } from "./Cycle.astro";
 export { default as Faq } from "./Faq.astro";
+export { default as Geography } from "./Geography.astro";
 export { default as Hero } from "./Hero.astro";
 export { default as Letters } from "./Letters.astro";
 export { default as Partners } from "./Partners.astro";

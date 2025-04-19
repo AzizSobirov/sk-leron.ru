@@ -1,0 +1,312 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Geography -->
+<Section name="geography">
+  <div class="geography__content">
+    <H2><strong>География</strong> работы компании </H2>
+
+    <div class="geography__countries">
+      <div class="geography__countries-item">
+        <Image src="flags/liviya.png" />
+        <span>Ливия</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/kca.png" />
+        <span>КСА</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/yuar.png" />
+        <span>ЮАР</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/siriya.png" />
+        <span>Сирия</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/oae.png" />
+        <span>ОАЭ</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/belarus.png" />
+        <span>Беларусь</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/irak.png" />
+        <span>Ирак</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/iran.png" />
+        <span>Иран</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/russia.png" />
+        <span>Россия</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/uzbekistan.png" />
+        <span>Узбекистан</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/turkmenistan.png" />
+        <span>Туркменистан</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/kazaxstan.png" />
+        <span>Казахстан</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/china.png" />
+        <span>Китай</span>
+      </div>
+      <div class="geography__countries-item">
+        <Image src="flags/india.png" />
+        <span>Индия</span>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .geography {
+    position: relative;
+    height: rem(1500);
+    background: #32383f url("/assets/img/earth-bg.png") top/cover no-repeat;
+    background-size: 100% auto;
+
+    @include media("3xl") {
+      height: rem(1320);
+    }
+    @include media("xl") {
+      height: rem(1100);
+    }
+    @include media("lg") {
+      height: auto;
+      background-size: cover;
+    }
+
+    &__content {
+      margin: rem(200) 0;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(55);
+
+      @include media("3xl") {
+        margin: rem(140) 0;
+      }
+      @include media("xl") {
+        margin: rem(60) 0;
+        gap: rem(30);
+      }
+      @include media("lg") {
+        margin: rem(20) 0 rem(40);
+      }
+
+      .text-h2 {
+        color: #fff;
+      }
+    }
+
+    &__countries {
+      position: relative;
+      width: 100%;
+      height: rem(450);
+
+      @include media("3xl") {
+        height: rem(400);
+      }
+      @include media("xl") {
+        height: rem(300);
+      }
+      @include media("lg") {
+        height: rem(250);
+      }
+
+      &-item {
+        position: absolute;
+        top: var(--y);
+        left: var(--x);
+        font-size: rem(16);
+
+        @include media("3xl") {
+          font-size: rem(14);
+        }
+        @include media("2xl") {
+          font-size: rem(13);
+        }
+        @include media("xl") {
+          font-size: rem(11);
+        }
+        @include media("lg") {
+          font-size: rem(8);
+        }
+        @include media("sm") {
+          font-size: rem(8);
+        }
+
+        &:nth-child(1) {
+          --y: 61%;
+          --x: 14%;
+
+          @include media("sm") {
+            --x: 4%;
+          }
+        }
+
+        &:nth-child(2) {
+          --y: 78%;
+          --x: 20%;
+
+          @include media("sm") {
+            --x: 16%;
+          }
+        }
+
+        &:nth-child(3) {
+          --y: 100%;
+          --x: 25%;
+        }
+
+        &:nth-child(4) {
+          --y: 42%;
+          --x: 26%;
+
+          @include media("sm") {
+            --x: 22%;
+          }
+        }
+
+        &:nth-child(5) {
+          --y: 72%;
+          --x: 32%;
+        }
+
+        &:nth-child(6) {
+          --y: 22%;
+          --x: 42%;
+
+          @include media("sm") {
+            --x: 38%;
+          }
+        }
+
+        &:nth-child(7) {
+          --y: 56%;
+          --x: 40.5%;
+
+          @include media("sm") {
+            --y: 50%;
+            --x: 43%;
+          }
+        }
+
+        &:nth-child(8) {
+          --y: 78%;
+          --x: 46%;
+
+          @include media("sm") {
+            --y: 80%;
+            --x: 50%;
+          }
+        }
+
+        &:nth-child(9) {
+          --y: 14%;
+          --x: 58%;
+
+          @include media("sm") {
+            --x: 62%;
+          }
+        }
+
+        &:nth-child(10) {
+          --y: 45%;
+          --x: 54%;
+
+          @include media("sm") {
+            --x: 60%;
+          }
+        }
+
+        &:nth-child(11) {
+          --y: 75%;
+          --x: 58%;
+
+          @include media("sm") {
+            --x: 68%;
+          }
+        }
+
+        &:nth-child(12) {
+          --y: 28%;
+          --x: 67%;
+
+          @include media("sm") {
+            --x: 80%;
+          }
+        }
+
+        &:nth-child(13) {
+          --y: 58%;
+          --x: 78%;
+
+          @include media("sm") {
+            --x: 90%;
+          }
+        }
+
+        &:nth-child(14) {
+          --y: 95%;
+          --x: 70%;
+
+          @include media("sm") {
+            --x: 82%;
+          }
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: em(15);
+          left: em(-35);
+          z-index: 2;
+          width: em(50);
+          height: rem(70);
+          background: url("/assets/img/icons/marker.svg") center/contain
+            no-repeat;
+
+          @include media("xl") {
+            top: em(-5);
+          }
+          @include media("xs") {
+            top: em(-45);
+            font-size: rem(6);
+          }
+        }
+
+        img {
+          position: absolute;
+          bottom: em(-15);
+          left: em(-20);
+          height: em(95);
+          min-width: fit-content;
+          object-fit: contain;
+        }
+
+        span {
+          padding: em(12) em(16);
+          font-size: 1em;
+          font-weight: 700;
+          background: var(--primary);
+          border-radius: em(4);
+        }
+      }
+    }
+  }
+</style>

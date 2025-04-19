@@ -82,7 +82,7 @@ const modal = {
     }
   },
 };
-// modal.init();
+modal.init();
 
 // header
 const header = document.querySelector(".header");
@@ -461,6 +461,16 @@ function successSend() {
 
 const forms = document.querySelectorAll(".the-form");
 forms.forEach((form) => {
+  const fileInput = form.querySelector("#file");
+  const fileLabel = form.querySelector("#file-label");
+
+  fileInput.addEventListener("change", function () {
+    const fileName = fileInput.files[0]?.name;
+    fileLabel.innerHTML = fileName
+      ? `${fileName} <span class="icon"></span>`
+      : 'Прикрепить файл <span class="icon"></span>';
+  });
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     successSend();

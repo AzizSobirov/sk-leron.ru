@@ -1,5 +1,5 @@
 ---
-import { H2, H3, P } from "ui";
+import { H2, H3, P, Image, Button } from "ui";
 
 interface Props {
   success?: boolean;
@@ -13,36 +13,169 @@ const { success = false, id } = Astro.props;
   {
     success ? (
       <>
-        <H2>СПАСИБО ЗА ЗАЯВКУ!</H2>
-        <P>
-          Наши менеджеры перезвонят Вам для <br /> уточнения деталей!
-        </P>
+        <div class="form-img form-img--success">
+          <Image src="form-img.png" />
+        </div>
+
+        <div class="form-content">
+          <div class="form-text form-text--success">
+            <H2>
+              Спасибо за <strong>Вашу заявку</strong>
+            </H2>
+            <P>Наш менеджер скоро свяжется с Вами для консультации</P>
+            <Button variant="outline" data-modal="close">
+              Закрыть
+            </Button>
+          </div>
+        </div>
       </>
     ) : (
       <>
-        <H2>Рассчитайте стоимость перегородок</H2>
-        <P>
-          Наши специалисты свяжуться с Вами для уточнения деталей по Вашему
-          проекту, <br /> и предоставят расчет в течении дня
-        </P>
+        <div class="form-img">
+          <Image src="form-img.png" />
+        </div>
 
-        <form class="the-form" id={id}>
-          <input type="text" name="name" placeholder="Ваше имя" required />
-          <input
-            type="text"
-            name="phone"
-            placeholder="Ваш номер телефона"
-            required
-          />
-          <input type="email" name="email" placeholder="Ваш E-mail" />
-          <button type="submit" class="btn">
-            Отправить
-          </button>
-        </form>
+        <div class="form-content">
+          <div class="form-text">
+            <H2>
+              Закажите
+              <strong>
+                расчет стоимости <br /> проекта
+              </strong>
+               
+            </H2>
+            <P>
+              Направим технико-экономическое предложение и дорожную карту
+              реализации проекта
+              <strong>
+                за 48 <br /> часов.
+              </strong>
+              <br />
+              <br />
+              <strong>Работаем</strong> на конкурсной основе и b2b.
+            </P>
+          </div>
 
-        <div class="text-xs">
-          Отправляя форму вы соглашаетесь с
-          <a href="#">Политикой конфиденциальности</a>
+          <form class="the-form" id={id}>
+            <div class="form-subtitle">
+              Оставьте свои контактные данные, <br /> специалист вам перезвонит
+              в ближайшее время  
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <input type="text" id="name" name="name" placeholder=" " />
+                <label for="name">Ваше имя</label>
+              </div>
+
+              <div class="form-group required">
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder=" "
+                  required
+                />
+                <label for="phone">
+                  Ваш телефон <span>*</span>
+                </label>
+              </div>
+
+              <div class="form-group row-2">
+                <textarea
+                  id="comment"
+                  name="comment"
+                  placeholder=" "
+                  rows="3"
+                />
+                <label for="comment">Комментарий</label>
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="region" name="region" placeholder=" " />
+                <label for="region">Ваш регион</label>
+              </div>
+
+              <div class="file-upload">
+                <label for="file" id="file-label">
+                  Прикрепить файл <span class="icon" />
+                </label>
+                <input
+                  type="file"
+                  id="file"
+                  name="file"
+                  accept=".rar,.zip,.7z,.pdf,.doc,.docx,.ppt,.pptx,.cdr,.eps,.ai,.png,.jpg,.gif"
+                />
+                <p>
+                  Допустимые форматы: rar, zip, 7z, pdf, doc, docx, ppt, pptx,
+                  cdr, eps, ai, png, jpg, gif
+                </p>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              <span>ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ</span>
+              <span class="icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <>
+                    <g clip-path="url(#prefix__clip0_66_1580)">
+                      <g clip-path="url(#prefix__clip1_66_1580)">
+                        <>
+                          <mask
+                            id="prefix__a"
+                            style="mask-type:luminance"
+                            maskUnits="userSpaceOnUse"
+                            x="0"
+                            y="0"
+                            width="24"
+                            height="24"
+                          >
+                            <path d="M23.2.88H.7v22.5h22.5V.88z" fill="#fff" />
+                          </mask>
+                          <g mask="url(#prefix__a)" fill="#333">
+                            <>
+                              <path d="M11.95.88C5.747.88.7 5.926.7 12.13c0 6.203 5.047 11.25 11.25 11.25 6.204 0 11.25-5.047 11.25-11.25C23.2 5.926 18.154.88 11.95.88zm0 21.562c-5.686 0-10.312-4.626-10.312-10.312 0-5.686 4.626-10.313 10.312-10.313 5.686 0 10.313 4.627 10.313 10.313 0 5.686-4.627 10.312-10.313 10.312z" />
+                              <path d="M16.645 13.551l.034-3.783a.468.468 0 10-.938-.007l-.034 3.787c0 .248-.016.61-.039.987a1.38 1.38 0 01-.137.516L8.634 8.154a.469.469 0 00-.663.663l6.897 6.897a1.382 1.382 0 01-.517.137c-.376.023-.738.04-.99.04l-3.784.033a.47.47 0 00.008.938l3.779-.034c.262 0 .646-.016 1.043-.04a2.342 2.342 0 002.196-2.196c.024-.398.041-.782.041-1.04l.002-.001z" />
+                            </>
+                          </g>
+                        </>
+                      </g>
+                    </g>
+                    <defs>
+                      <>
+                        <clipPath id="prefix__clip0_66_1580">
+                          <path
+                            fill="#fff"
+                            transform="translate(.7 .88)"
+                            d="M0 0h22.5v22.5H0z"
+                          />
+                        </clipPath>
+                        <clipPath id="prefix__clip1_66_1580">
+                          <path
+                            fill="#fff"
+                            transform="translate(.7 .88)"
+                            d="M0 0h22.5v22.5H0z"
+                          />
+                        </clipPath>
+                      </>
+                    </defs>
+                  </>
+                </svg>
+              </span>
+            </button>
+
+            <div class="consent">
+              <input type="checkbox" required />
+              <label for="consent">
+                Подтверждаю свои данные и даю
+                <a href="#">своё согласие на их обработку</a>
+              </label>
+            </div>
+          </form>
         </div>
       </>
     )
@@ -53,89 +186,309 @@ const { success = false, id } = Astro.props;
   @use "scss/helpers" as *;
 
   .form {
+    position: relative;
+    padding: rem(85) rem(95);
     width: 100%;
     color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: rem(30);
+    background: var(--text-color) url("/assets/img/form-bg.png") center/cover
+      no-repeat;
+    border-radius: rem(20);
+    overflow: hidden;
 
+    @include media("3xl") {
+      padding: rem(60);
+    }
+    @include media("lg") {
+      padding: rem(40);
+    }
     @include media("sm") {
-      gap: rem(20);
+      padding: rem(30) rem(20) rem(40);
+    }
+    @include media("xs") {
+      border-radius: 0;
+      min-width: calc(100% + var(--content-padding) * 2);
+      margin-left: calc(var(--content-padding) * -1);
     }
 
-    .text-h2 {
-      color: #fff;
-    }
+    &-img {
+      position: absolute;
+      bottom: 0;
+      left: 13%;
+      width: 57%;
 
-    .text-p {
+      &--success {
+        left: auto;
+        right: -5%;
+      }
+
       @include media("lg") {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &-content {
+      position: relative;
+      padding-top: rem(35);
+      border-top: rem(1) solid #ffffff30;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: rem(30) rem(20);
+
+      @include media("3xl") {
+        padding-top: rem(25);
+      }
+      @include media("lg") {
+        padding: 0;
+        border-top: none;
+        flex-direction: column;
+      }
+      @include media("xs") {
+        gap: rem(20);
+      }
+    }
+
+    &-text {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: rem(500);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(30);
+
+      &--success {
+        margin: rem(120) 0;
+      }
+
+      @include media("lg") {
+        max-width: 100%;
+        gap: rem(20);
+
         br {
           display: none;
         }
       }
-    }
+      @include media("xs") {
+        gap: rem(15);
+      }
 
-    .text-xs {
-      font-size: rem(12);
-      font-weight: 300;
+      .text-h2 {
+        color: #fff;
+      }
 
-      a {
-        text-decoration: underline;
+      .text-p {
+        @include media("xs") {
+          font-size: rem(14);
+        }
+
+        strong {
+          color: var(--primary);
+        }
       }
     }
 
     form {
-      margin-top: rem(20);
+      position: relative;
+      z-index: 2;
       width: 100%;
-      max-width: rem(435);
+      max-width: rem(506);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: rem(25);
+      gap: rem(30);
 
       @include media("lg") {
         margin-top: 0;
         max-width: 100%;
+        gap: rem(20);
       }
       @include media("xs") {
         gap: rem(15);
       }
     }
 
-    input {
-      padding: 0 rem(18);
-      width: 100%;
-      height: rem(40);
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 300;
-      border: rem(1) solid #fff;
-      border-radius: 9999px;
+    .form-subtitle {
+      font-weight: 700;
+      font-size: rem(22);
+      line-height: 120%;
 
-      &::placeholder {
-        color: #fff;
-        transition: var(--transition-ease);
+      @include media("xl") {
+        font-size: rem(18);
+      }
+      @include media("sm") {
+        font-size: rem(16);
+      }
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: rem(20) rem(15);
+
+      @include media("sm") {
+        grid-template-columns: 1fr;
+        gap: rem(12);
       }
 
-      &:focus {
-        &::placeholder {
-          transform: translateX(-50%);
+      .form-group {
+        position: relative;
+
+        input,
+        textarea {
+          width: 100%;
+          padding: rem(18) rem(12) rem(8);
+          border-radius: rem(10);
+          border: none;
+          font-size: rem(14);
+          background: #e6e6e6;
+          color: #000;
+          outline: none;
+        }
+
+        textarea {
+          resize: vertical;
+          height: 100%;
+        }
+
+        label {
+          position: absolute;
+          left: rem(12);
+          top: rem(12);
+          font-size: rem(14);
+          color: #555;
+          pointer-events: none;
+          transition: 0.3s ease;
+
+          span {
+            color: red;
+          }
+        }
+
+        input:focus + label,
+        input:not(:placeholder-shown) + label,
+        textarea:focus + label,
+        textarea:not(:placeholder-shown) + label {
+          top: rem(3);
+          font-size: rem(12);
+          color: #222;
+        }
+
+        &.wide {
+          grid-column: span 2;
+        }
+
+        &.row-2 {
+          grid-row: span 2;
         }
       }
     }
 
-    button {
-      margin-top: rem(5);
-      width: rem(230);
-      height: rem(40);
-      font-weight: 300;
-      background: var(--primary);
-      border: rem(1) solid #fff;
-      border-radius: 9999px;
+    .file-upload {
+      font-size: rem(14);
 
-      &:hover {
-        opacity: 0.85;
+      label {
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(10);
+
+        .icon {
+          --icon-size: #{rem(22)};
+          background: url('data:image/svg+xml,<svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.1396 18.9697V15.2197C23.1396 14.9711 23.0409 14.7326 22.865 14.5569C22.6893 14.381 22.4508 14.2822 22.2021 14.2822C21.9535 14.2822 21.715 14.381 21.5393 14.5569C21.3634 14.7326 21.2646 14.9711 21.2646 15.2197V18.9697C21.2646 19.2184 21.1659 19.4569 20.99 19.6326C20.8143 19.8085 20.5758 19.9072 20.3271 19.9072H3.45215C3.20351 19.9072 2.96505 19.8085 2.78924 19.6326C2.61342 19.4569 2.51465 19.2184 2.51465 18.9697V15.2197C2.51465 14.9711 2.41587 14.7326 2.24006 14.5569C2.06425 14.381 1.82579 14.2822 1.57715 14.2822C1.32851 14.2822 1.09005 14.381 0.914236 14.5569C0.738421 14.7326 0.639648 14.9711 0.639648 15.2197V18.9697C0.639648 19.7156 0.935965 20.431 1.46341 20.9585C1.99086 21.4859 2.70622 21.7822 3.45215 21.7822H20.3271C21.073 21.7822 21.7884 21.4859 22.3159 20.9585C22.8433 20.431 23.1396 19.7156 23.1396 18.9697ZM17.1584 14.076L12.4709 17.826C12.3054 17.9567 12.1006 18.0279 11.8896 18.0279C11.6787 18.0279 11.4739 17.9567 11.3084 17.826L6.6209 14.076C6.4501 13.9147 6.34604 13.6954 6.32931 13.461C6.31257 13.2267 6.38437 12.9947 6.53052 12.8109C6.67667 12.627 6.88651 12.5047 7.11851 12.4682C7.35052 12.4316 7.5878 12.4835 7.7834 12.6135L10.9521 15.1447V2.09473C10.9521 1.84609 11.0509 1.60763 11.2267 1.43181C11.4025 1.256 11.641 1.15723 11.8896 1.15723C12.1383 1.15723 12.3767 1.256 12.5526 1.43181C12.7284 1.60763 12.8271 1.84609 12.8271 2.09473V15.1447L15.9959 12.6135C16.0903 12.5244 16.2021 12.4558 16.3244 12.4122C16.4468 12.3686 16.5768 12.3509 16.7063 12.3601C16.8358 12.3694 16.9619 12.4054 17.0766 12.466C17.1915 12.5265 17.2925 12.6103 17.3733 12.7119C17.4541 12.8135 17.5129 12.9309 17.546 13.0564C17.579 13.1819 17.5856 13.3129 17.5655 13.4411C17.5453 13.5694 17.4986 13.692 17.4286 13.8014C17.3585 13.9106 17.2665 14.0041 17.1584 14.076Z" fill="%23F1C40F" /></svg>')
+            center/contain;
+        }
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      p {
+        margin-top: rem(6);
+        font-size: rem(12);
+        color: #aaa;
+      }
+    }
+
+    .submit-btn {
+      padding: rem(16);
+      background: #ffd000;
+      color: #000;
+      font-weight: bold;
+      font-size: rem(14);
+      border: none;
+      border-radius: rem(50);
+      cursor: pointer;
+      width: fit-content;
+      align-self: start;
+
+      .arrow {
+        margin-left: rem(8);
+      }
+    }
+
+    .consent {
+      display: flex;
+      align-items: center;
+      gap: rem(8);
+      font-size: rem(12);
+
+      // Hide native checkbox
+      input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: rem(16);
+        height: rem(16);
+        border: rem(1) solid #ccc;
+        border-radius: rem(4);
+        position: relative;
+        cursor: pointer;
+        flex-shrink: 0;
+        transition:
+          border-color 0.2s,
+          background-color 0.2s;
+
+        &:hover {
+          border-color: #fff;
+        }
+
+        &:checked {
+          background-color: #ffd000;
+          border-color: #ffd000;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: rem(6);
+            height: rem(10);
+            transform: translate(-50%, -60%) rotate(45deg);
+            border: solid #000;
+            border-width: 0 rem(2) rem(2) 0;
+          }
+        }
+      }
+
+      label {
+        display: inline;
+        line-height: 1.2;
+
+        a {
+          color: #ffd000;
+          text-decoration: underline;
+        }
       }
     }
   }
