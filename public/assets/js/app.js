@@ -89,8 +89,6 @@ const header = document.querySelector(".header");
 if (header) {
   const menu = header.querySelector(".header__menu");
   const services = menu.querySelectorAll(".menu-item-has-children");
-  const catalog = header.querySelector(".header__catalog");
-  const btnCatalog = header.querySelector(".btn-catalog");
 
   window.addEventListener("scroll", () => {
     header.classList.toggle("sticky", window.scrollY > 0);
@@ -118,23 +116,6 @@ if (header) {
       });
     });
   });
-
-  const outsideClickHandler = (event) => {
-    if (!header.contains(event.target)) {
-      catalog.classList.remove("show");
-      btnCatalog.classList.remove("active");
-
-      catalog.addEventListener("transitionend", function handler(event) {
-        if (
-          event.propertyName === "transform" &&
-          !catalog.classList.contains("show")
-        ) {
-          catalog.style.display = "none";
-          catalog.removeEventListener("transitionend", handler);
-        }
-      });
-    }
-  };
 
   const tabsEl = header.querySelector(".mobile__menu-tabs");
   const tabs = tabsEl.querySelectorAll("[data-toggle]");
@@ -196,15 +177,11 @@ if (header) {
           let html = menu.querySelector(".menu");
           tabsContent.innerHTML = html.outerHTML;
         } else if (tab.dataset.toggle == "catalog") {
-          let catalogSections = catalog.querySelectorAll(
-            ".header__catalog-section"
+          let menuServices = menu.querySelector(
+            ".menu-item-has-children .sub-menu"
           );
-          let html = "";
-          catalogSections.forEach((section) => {
-            html += section.outerHTML;
-          });
 
-          tabsContent.innerHTML = html;
+          tabsContent.innerHTML = menuServices.outerHTML;
         }
       }
     });
