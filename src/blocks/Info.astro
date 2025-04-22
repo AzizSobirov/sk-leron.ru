@@ -50,6 +50,14 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 
   .info {
     position: relative;
+    margin-top: rem(100);
+
+    @include media("3xl") {
+      margin-top: rem(80);
+    }
+    @include media("lg") {
+      margin-top: 0;
+    }
 
     h1 {
       font-size: rem(32);

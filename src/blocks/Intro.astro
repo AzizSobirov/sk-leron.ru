@@ -40,6 +40,8 @@ const { title, img, bg, lines = true } = Astro.props;
       height: rem(440);
     }
     @include media("sm") {
+      height: rem(420);
+
       .bg-img {
         img {
           object-position: right;
@@ -129,8 +131,8 @@ const { title, img, bg, lines = true } = Astro.props;
         height: 70%;
       }
       @include media("sm") {
-        right: -10%;
-        height: 60%;
+        right: 0%;
+        height: 70%;
       }
 
       img {

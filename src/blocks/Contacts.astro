@@ -1,0 +1,232 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Contacts -->
+<Section name="contacts">
+  <div class="contacts__text">
+    <ul class="contacts__text-list">
+      <li>
+        <Icon src="location.svg" />
+        <span>Чувашская Республика, г.Чебоксары, ул. И. Яковлева, д. 35</span>
+      </li>
+      <li>
+        <Icon src="mobile.svg" />
+        <a href="tel:+79003330072" title="Телефон" target="_blank">
+          +7 (900) 333-00-72
+        </a>
+      </li>
+      <li>
+        <Icon src="mobile.svg" />
+        <a href="tel:+7835209663" title="Телефон" target="_blank">
+          +7 (8352) 709-663
+        </a>
+      </li>
+      <li>
+        <Icon src="email-filled.svg" />
+        <a href="mailto:sk-leron@mail.ru" title="Email" target="_blank">
+          sk-leron@mail.ru
+        </a>
+      </li>
+    </ul>
+    <Button variant="outline" data-modal="callback">Заказать звонок</Button>
+  </div>
+
+  <div class="contacts__map">
+    <iframe
+      src="https://yandex.uz/map-widget/v1/?ll=47.271529%2C56.081829&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNjA3MDkyMzEwEooB0KDQvtGB0YHQuNGPLCDQp9GD0LLQsNGI0YHQutCw0Y8g0KDQtdGB0L_Rg9Cx0LvQuNC60LAg4oCUINCn0YPQstCw0YjQuNGPLCDQp9C10LHQvtC60YHQsNGA0YssINC_0YDQvtGB0L_QtdC60YIg0Jgu0K8uINCv0LrQvtCy0LvQtdCy0LAsIDM1IgoNbxE9QhWFUWBC&z=15"
+      width="560"
+      height="400"
+      allowfullscreen="true"
+      style="position:relative;"></iframe>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .contacts {
+    position: relative;
+    height: rem(850);
+    overflow: hidden;
+
+    @include media("3xl") {
+      height: rem(700);
+    }
+    @include media("xl") {
+      height: auto;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: #32373d;
+    }
+
+    .container {
+      height: 100%;
+      justify-content: center;
+    }
+
+    &__text {
+      position: relative;
+      width: 100%;
+      max-width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(45);
+
+      @include media("xl") {
+        position: static;
+        margin-top: rem(50);
+        max-width: 100%;
+      }
+      @include media("lg") {
+        margin-top: rem(40);
+      }
+      @include media("sm") {
+        margin-top: rem(20);
+        gap: rem(30);
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      &::before {
+        top: 50%;
+        left: 0;
+        transform: translate(-40%, -50%);
+        width: rem(1200);
+        height: rem(1200);
+        background-image: url('data:image/svg+xml,<svg width="845" height="837" viewBox="0 0 845 837" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.1" d="M395.524 0V214.508H336.558V183.234C228.252 219.319 150.031 321.561 150.031 441.846C150.031 457.884 151.636 473.922 154.043 489.158L185.331 471.115L214.614 522.036L170.89 547.296L58.1727 612.249L29.2913 629.49L0.00878906 578.57L37.7151 556.918C26.8846 520.432 20.8676 481.941 20.8676 442.247C20.8676 249.792 156.049 89.4117 336.558 49.7177V0H395.524Z" fill="%23E84C3D" /><path opacity="0.1" d="M449.275 0V214.508H508.242V183.234C616.547 219.319 694.768 321.561 694.768 441.846C694.768 457.884 693.163 473.922 690.756 489.158L659.469 471.115L630.186 522.036L673.909 547.296L786.627 612.249L815.509 629.49L844.791 578.57L807.085 556.918C817.915 520.432 823.932 481.941 823.932 442.247C823.932 249.792 688.751 89.4117 508.242 49.7177V0H449.275Z" fill="%23F1C40F" /><path opacity="0.1" d="M787.292 679.609L601.439 572.355L571.956 623.398L599.052 639.035C513.635 714.746 385.94 731.335 281.723 671.192C267.828 663.174 254.734 653.766 242.736 644.064L274.013 626.001L244.536 575.193L200.789 600.412L88.1529 665.507L58.7744 681.887L88.2518 732.695L125.864 710.881C152.061 738.499 182.402 762.953 216.794 782.8C383.541 879.026 590.087 842.202 714.733 705.793L757.809 730.652L787.292 679.609Z" fill="%233598DB" /></svg>');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 55% auto;
+
+        @include media("3xl") {
+          width: rem(1000);
+          height: rem(1000);
+        }
+        @include media("xl") {
+          left: auto;
+          right: 0;
+          width: 100%;
+          height: 100%;
+          transform: translate(0%, -50%);
+        }
+      }
+
+      &::after {
+        bottom: rem(110);
+        left: rem(230);
+        width: rem(400);
+        height: rem(650);
+        background: url("/assets/img/vector-y-bg.png") center/contain no-repeat;
+        pointer-events: none;
+
+        @include media("3xl") {
+          width: rem(350);
+          height: rem(500);
+        }
+        @include media("xl") {
+          bottom: auto;
+          top: -20%;
+          left: auto;
+          right: 0;
+        }
+        @include media("sm") {
+          width: 40%;
+        }
+      }
+
+      &-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(25);
+
+        @include media("sm") {
+          gap: rem(20);
+        }
+      }
+
+      li {
+        color: #fff;
+        font-size: rem(22);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(15);
+        --icon-size: #{rem(30)};
+
+        @include media("3xl") {
+          font-size: rem(20);
+        }
+        @include media("sm") {
+          font-size: rem(16);
+          --icon-size: #{rem(28)};
+        }
+      }
+
+      .btn {
+        text-transform: unset;
+      }
+    }
+
+    &__map {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      padding: rem(5) 0 rem(5) rem(5);
+      width: 50%;
+      height: calc(100% - rem(70));
+      background: var(--primary);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%);
+      overflow: hidden;
+
+      @include media("3xl") {
+        left: 55%;
+        width: 45%;
+      }
+      @include media("xl") {
+        position: relative;
+        left: 0;
+        margin-top: rem(20);
+        padding: rem(4);
+        width: 100%;
+        height: rem(400);
+        --border-angle: #{rem(40)};
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--border-angle)) 0%,
+          100% var(--border-angle),
+          100% 100%,
+          var(--border-angle) 100%,
+          0 calc(100% - var(--border-angle))
+        );
+      }
+      @include media("sm") {
+        padding: rem(2);
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        filter: grayscale(1);
+        clip-path: inherit;
+      }
+    }
+  }
+</style>

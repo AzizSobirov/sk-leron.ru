@@ -358,6 +358,20 @@ let certificatesSwiper = new Swiper(".certificates__list", {
   },
 });
 
+let gallerySwiper = new Swiper(".gallery__list", {
+  slidesPerView: "auto",
+  spaceBetween: 15,
+  navigation: {
+    nextEl: ".gallery__nav .swiper-button-next",
+    prevEl: ".gallery__nav .swiper-button-prev",
+  },
+  breakpoints: {
+    641: {
+      slidesPerView: 2,
+    },
+  },
+});
+
 // Initialize the fancybox
 const fancyboxTriggers = Array.from(
   document.querySelectorAll("[data-fancybox]")
