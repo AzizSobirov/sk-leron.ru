@@ -1,0 +1,144 @@
+---
+import { Section, H2, H3, P, BgImg, Image, Icon, Button } from "ui";
+
+interface Props {
+  title: string;
+  img?: string;
+  bg: string;
+  lines?: boolean;
+}
+
+const { title, img, bg, lines = true } = Astro.props;
+---
+
+<!-- Intro -->
+<Section name={"intro" + (!lines ? " secondary" : "")}>
+  <Fragment slot="header">
+    <BgImg src={bg} />
+
+    {
+      img && (
+        <div class="intro__img">
+          <Image src={img} />
+        </div>
+      )
+    }
+  </Fragment>
+
+  <div class="intro__title" set:html={title} />
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .intro {
+    position: relative;
+    padding: 0 !important;
+    height: rem(524);
+
+    @include media("lg") {
+      height: rem(440);
+    }
+    @include media("sm") {
+      .bg-img {
+        img {
+          object-position: right;
+        }
+      }
+    }
+
+    &.secondary {
+      .container::after {
+        display: none !important;
+      }
+
+      @include media("1025px", min-width) {
+        .intro__title {
+          font-size: rem(52);
+          letter-spacing: rem(2.5);
+        }
+      }
+    }
+
+    .container {
+      position: relative;
+      height: 100%;
+      justify-content: center;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: var(--content-padding);
+        transform: translateY(50%);
+        width: 100%;
+        height: rem(75);
+        background: url(/assets/img/intro/lines.svg) left/contain no-repeat;
+      }
+
+      @include media("lg") {
+        &::after {
+          height: rem(50);
+        }
+      }
+
+      @include media("sm") {
+        padding-top: rem(120);
+        justify-content: flex-start;
+      }
+
+      @include media("xs") {
+        &::after {
+          height: rem(50);
+          background-position: center;
+        }
+      }
+    }
+
+    &__title {
+      color: #fff;
+      font-size: rem(80);
+      font-weight: 900;
+      font-family: var(--font-secondary);
+      text-transform: uppercase;
+
+      @include media("3xl") {
+        font-size: rem(60);
+      }
+      @include media("lg") {
+        font-size: rem(40);
+      }
+      @include media("md") {
+        font-size: rem(30);
+      }
+    }
+
+    &__img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      z-index: -1;
+      transform: translateX(20%);
+      height: 85%;
+      user-select: none;
+
+      @include media("lg") {
+        left: auto;
+        right: -5%;
+        transform: translateX(0);
+        height: 70%;
+      }
+      @include media("sm") {
+        right: -10%;
+        height: 60%;
+      }
+
+      img {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+        object-position: bottom;
+      }
+    }
+  }
+</style>

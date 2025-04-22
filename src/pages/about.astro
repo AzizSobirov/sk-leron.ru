@@ -1,0 +1,21 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="О компании">
+  <main>
+    <Blocks.Intro
+      title="О КОМПАНИИ"
+      img="intro/about-img.png"
+      bg="intro/about-bg.png"
+    />
+    <Blocks.Trust top />
+    <Blocks.Stats secondary />
+    <Blocks.Partners />
+    <Blocks.Letters />
+    <Blocks.Certificates />
+    <Blocks.Geography />
+    <Blocks.Application fixed />
+  </main>
+</App>

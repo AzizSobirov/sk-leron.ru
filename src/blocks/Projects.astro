@@ -1,0 +1,200 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Projects -->
+<Section name="projects">
+  <div class="projects__list">
+    {
+      Array.from({ length: 10 }).map(() => (
+        <div class="project">
+          <div class="project__text">
+            <div class="project__text-date">2025</div>
+            <div class="project__text-title">Котельная в г.Чебоксары</div>
+            <p class="project__text-desc">
+              Спроектировали, построили и запустили модульную котельную в
+              г.Чебоксары
+            </p>
+            <Button variant="outline" href="/project">
+              {" "}
+              ПОДРОБНЕЕ{" "}
+            </Button>
+          </div>
+          <div class="project__img bg-img">
+            <Image src="projects/1.png" />
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .projects {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      pointer-events: none;
+
+      @include media("lg") {
+        display: none;
+      }
+    }
+
+    &::before {
+      right: 0;
+      top: 10%;
+      width: 75%;
+      height: rem(410);
+      background: url("/assets/img/footer-bg.png") center/cover no-repeat;
+    }
+
+    &::after {
+      left: 0;
+      bottom: 10%;
+      width: 100%;
+      height: rem(1270);
+      background: url("/assets/img/projects-bg.png") center/cover no-repeat;
+    }
+
+    &__list {
+      margin-top: rem(30);
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(80);
+
+      @include media("3xl") {
+        gap: rem(40);
+      }
+      @include media("lg") {
+        margin-top: 0;
+        grid-template-columns: 1fr;
+        gap: rem(20);
+      }
+      @include media("sm") {
+        margin-top: rem(10);
+        gap: rem(15);
+      }
+    }
+
+    .project {
+      --border-angle: #{rem(25)};
+      position: relative;
+      padding: rem(35) rem(42);
+      min-height: rem(400);
+      width: 100%;
+      color: #fff;
+      transition: opacity var(--transition-ease);
+      clip-path: polygon(
+        var(--border-angle) 0%,
+        calc(100% - var(--border-angle)) 0%,
+        100% var(--border-angle),
+        100% calc(100% - var(--border-angle)),
+        calc(100% - var(--border-angle)) 100%,
+        var(--border-angle) 100%,
+        0% calc(100% - var(--border-angle)),
+        0% var(--border-angle)
+      );
+
+      @include media("3xl") {
+        min-height: rem(360);
+      }
+      @include media("xl") {
+        min-height: rem(340);
+      }
+      @include media("lg") {
+        padding: rem(30);
+        min-height: rem(300);
+      }
+      @include media("sm") {
+        padding: rem(20);
+        min-height: rem(250);
+        --border-angle: #{rem(15)};
+      }
+      @include media("xs") {
+        min-height: rem(200);
+      }
+
+      .bg-img {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to right, #393e43 45%, transparent);
+        }
+
+        img {
+          margin-left: auto;
+          width: 60%;
+        }
+      }
+
+      &__text {
+        width: 100%;
+        max-width: rem(300);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(32);
+
+        @include media("lg") {
+          gap: rem(25);
+        }
+        @include media("sm") {
+          gap: rem(15);
+        }
+
+        &-date {
+          position: relative;
+          color: var(--primary);
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: rem(5);
+
+          @include media("sm") {
+            font-size: rem(14);
+          }
+
+          &::before {
+            content: "";
+            display: inline-block;
+            width: rem(52);
+            height: rem(1);
+            background: currentColor;
+
+            @include media("lg") {
+              width: em(40);
+            }
+          }
+        }
+
+        &-title {
+          font-weight: 600;
+          font-size: rem(20);
+
+          @include media("sm") {
+            font-size: rem(18);
+          }
+        }
+
+        &-desc {
+          @include media("xs") {
+            font-size: rem(14);
+          }
+        }
+      }
+    }
+  }
+</style>

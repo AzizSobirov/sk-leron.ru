@@ -1,9 +1,38 @@
 ---
 import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  top?: boolean;
+}
+
+const { top = false } = Astro.props;
 ---
 
 <!-- Trust -->
 <Section name="trust">
+  {
+    top && (
+      <div class="trust__top">
+        <div class="trust__top-content">
+          <p>
+            Строительная компания «СК-Лерон» была основана в 2015 году и с
+            момента своего создания активно развивается, предоставляя
+            комплексные решения в области газификации и теплоснабжения жилых и
+            промышленных объектов.
+            <br />
+            <br />
+            За годы работы предприятие зарекомендовало себя как надежный
+            партнер, успешно реализуя проекты различной сложности по всей
+            территории России. Компания выполняет полный комплекс работ по
+            газификации и теплоснабжению, начиная от проектирования и
+            согласования документации до непосредственного монтажа и ввода
+            систем в эксплуатацию.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   <div class="trust__content">
     <div class="trust__card">
       <H2 class="trust__content-title">
@@ -97,6 +126,77 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
       height: 125%;
       width: 100%;
       background: url(/assets/img/trust-bg.png) top/cover no-repeat;
+    }
+
+    &__top {
+      position: relative;
+      width: 100%;
+      height: rem(100);
+      margin-bottom: rem(120);
+
+      @include media("3xl") {
+        height: rem(90);
+      }
+      @include media("lg") {
+        margin-bottom: 0;
+        height: auto;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: rem(-180);
+        left: 0;
+        width: 100%;
+        height: rem(100);
+        background: url("/assets/img/footer-bg.png") center/cover no-repeat;
+
+        @include media("lg") {
+          bottom: rem(-30);
+          background-image: url("/assets/img/footer-bg-mobile.png");
+        }
+      }
+
+      &-content {
+        position: absolute;
+        bottom: rem(-150);
+        z-index: 2;
+        padding: rem(70) rem(100);
+        font-size: rem(24);
+        background: var(--primary);
+        --border-angle: #{rem(80)};
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--border-angle)) 0%,
+          100% var(--border-angle),
+          100% 100%,
+          var(--border-angle) 100%,
+          0 calc(100% - var(--border-angle))
+        );
+
+        @include media("3xl") {
+          font-size: rem(20);
+        }
+
+        @include media("xl") {
+          padding: rem(50) rem(80);
+          --border-angle: #{rem(60)};
+        }
+
+        @include media("lg") {
+          position: relative;
+          bottom: 0;
+          padding: rem(40) rem(60);
+          --border-angle: #{rem(40)};
+        }
+
+        @include media("sm") {
+          margin-top: rem(10);
+          padding: rem(25);
+          font-size: rem(16);
+          --border-angle: #{rem(30)};
+        }
+      }
     }
 
     &__content {

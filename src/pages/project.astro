@@ -1,0 +1,17 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="Работа (внутренняя)">
+  <main>
+    <Blocks.Intro
+      title="Котельная в <br/> г.Чебоксары"
+      bg="intro/project-bg.png"
+      lines={false}
+    />
+    <Blocks.Gallery />
+    <Blocks.Info />
+    <Blocks.Application />
+  </main>
+</App>

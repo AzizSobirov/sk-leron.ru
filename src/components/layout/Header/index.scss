@@ -251,7 +251,7 @@
       align-items: flex-start;
       gap: rem(4);
 
-      @include media("3xl") {
+      @include media("lg") {
         &:nth-child(1) {
           display: none;
         }
@@ -559,10 +559,11 @@
     position: absolute;
     top: rem(15);
     right: rem(15);
+    z-index: 2;
 
     svg {
-      width: rem(16);
-      height: rem(16);
+      width: rem(18);
+      height: rem(18);
     }
   }
 }
