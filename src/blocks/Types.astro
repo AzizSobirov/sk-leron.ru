@@ -1,14 +1,289 @@
 ---
-import { Section,H2,H3,P, Image, Icon, Button } from "ui";
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 ---
 
 <!-- Types -->
-<Section name="types"> .types </Section>
+<Section name="types">
+  <div class="types__title">ВИДЫ МОДУЛЬНЫХ КОТЕЛЬНЫХ</div>
+  <div class="types__list">
+    <div class="types__item">
+      <a href="#" class="types__item-link"></a>
+      <Image class="types__item-img" src="types/1.png" />
+      <div class="types__item-btn">
+        <span>СТАЦИОНАРНЫЕ</span>
+        <svg
+          width="90"
+          height="23"
+          viewBox="0 0 90 23"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M89.0607 12.5607C89.6464 11.9749 89.6464 11.0251 89.0607 10.4393L79.5147 0.893398C78.9289 0.307611 77.9792 0.307611 77.3934 0.893398C76.8076 1.47919 76.8076 2.42893 77.3934 3.01472L85.8787 11.5L77.3934 19.9853C76.8076 20.5711 76.8076 21.5208 77.3934 22.1066C77.9792 22.6924 78.9289 22.6924 79.5147 22.1066L89.0607 12.5607ZM0 13H88V10H0V13Z"
+            fill="#F1C40F"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="types__item">
+      <a href="#" class="types__item-link"></a>
+      <Image class="types__item-img" src="types/1.png" />
+      <div class="types__item-btn">
+        <span>Встроенные</span>
+        <svg
+          width="90"
+          height="23"
+          viewBox="0 0 90 23"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M89.0607 12.5607C89.6464 11.9749 89.6464 11.0251 89.0607 10.4393L79.5147 0.893398C78.9289 0.307611 77.9792 0.307611 77.3934 0.893398C76.8076 1.47919 76.8076 2.42893 77.3934 3.01472L85.8787 11.5L77.3934 19.9853C76.8076 20.5711 76.8076 21.5208 77.3934 22.1066C77.9792 22.6924 78.9289 22.6924 79.5147 22.1066L89.0607 12.5607ZM0 13H88V10H0V13Z"
+            fill="#F1C40F"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="types__item">
+      <a href="#" class="types__item-link"></a>
+      <Image class="types__item-img" src="types/1.png" />
+      <div class="types__item-btn">
+        <span>Пристроенные</span>
+        <svg
+          width="90"
+          height="23"
+          viewBox="0 0 90 23"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M89.0607 12.5607C89.6464 11.9749 89.6464 11.0251 89.0607 10.4393L79.5147 0.893398C78.9289 0.307611 77.9792 0.307611 77.3934 0.893398C76.8076 1.47919 76.8076 2.42893 77.3934 3.01472L85.8787 11.5L77.3934 19.9853C76.8076 20.5711 76.8076 21.5208 77.3934 22.1066C77.9792 22.6924 78.9289 22.6924 79.5147 22.1066L89.0607 12.5607ZM0 13H88V10H0V13Z"
+            fill="#F1C40F"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .types {
     position: relative;
+    padding-bottom: 0 !important;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(var(--content-width) + rem(200));
+      height: 100%;
+      background: #fff;
+      pointer-events: none;
+      z-index: -1;
+
+      @include media("3xl") {
+        width: calc(var(--content-width) + rem(160));
+      }
+    }
+
+    &__title {
+      position: relative;
+      width: 100%;
+      font-weight: 900;
+      font-size: rem(90);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+
+      @include media("3xl") {
+        font-size: rem(70);
+      }
+      @include media("xl") {
+        font-size: rem(60);
+      }
+      @include media("lg") {
+        font-size: rem(48);
+      }
+      @include media("sm") {
+        font-size: rem(24);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 48%;
+        right: -10%;
+        z-index: -1;
+        height: 100%;
+        min-height: rem(40);
+        min-width: rem(220);
+        width: 40%;
+        background: url("/assets/img/lines-2.svg") center/contain no-repeat;
+      }
+    }
+
+    &__list {
+      position: relative;
+      padding: rem(50) 0 rem(85);
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(60) rem(20);
+
+      @include media("xl") {
+        grid-template-columns: repeat(2, 1fr);
+        gap: rem(50) rem(20);
+      }
+      @include media("md") {
+        grid-template-columns: 1fr;
+      }
+      @include media("sm") {
+        padding: rem(10) 0 rem(60);
+        gap: rem(30);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        height: calc(100% - rem(135));
+        background: #272727 url("/assets/img/form-bg.png") center/cover
+          no-repeat;
+      }
+    }
+
+    &__item {
+      position: relative;
+      padding: rem(35) rem(30);
+      width: 100%;
+      height: rem(430);
+      --border-angle: #{rem(40)};
+
+      @include media("lg") {
+        height: rem(350);
+      }
+      @include media("sm") {
+        height: rem(300);
+      }
+      @include media("xs") {
+        padding: rem(25) rem(20);
+        height: rem(280);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 3;
+        transform: translate(4%, 50%);
+        width: 70%;
+        height: rem(42);
+        background: url("/assets/img/intro/lines.svg") center/contain no-repeat;
+      }
+
+      &-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--border-angle)) 0%,
+          100% var(--border-angle),
+          100% 100%,
+          var(--border-angle) 100%,
+          0 calc(100% - var(--border-angle))
+        );
+
+        &::before {
+          content: "";
+          @include center;
+          width: 100%;
+          height: 100%;
+          background: var(--primary);
+          clip-path: inherit;
+        }
+
+        &::after {
+          content: "";
+          @include center;
+          width: calc(100% - rem(4));
+          height: calc(100% - rem(4));
+          background: #262626;
+          clip-path: inherit;
+          pointer-events: none;
+        }
+      }
+
+      &-img {
+        position: absolute;
+        bottom: rem(2);
+        left: rem(2);
+        z-index: 2;
+        width: calc(100% - rem(4));
+        height: auto;
+        max-height: calc(100% - rem(4));
+        object-fit: cover;
+        pointer-events: none;
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--border-angle)) 0%,
+          100% var(--border-angle),
+          100% 100%,
+          var(--border-angle) 100%,
+          0 calc(100% - var(--border-angle))
+        );
+      }
+
+      &-btn {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: rem(25);
+        pointer-events: none;
+
+        @include media("xs") {
+          gap: rem(15);
+        }
+
+        span {
+          color: var(--primary);
+          font-weight: 900;
+          font-size: rem(24);
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+
+          @include media("3xl") {
+            font-size: rem(20);
+          }
+          @include media("xs") {
+            font-size: rem(16);
+          }
+        }
+
+        svg {
+          transition: var(--transition-ease);
+
+          @include media("xs") {
+            width: rem(60);
+          }
+        }
+      }
+
+      &:hover {
+        .types__item-btn svg {
+          transform: translateX(rem(10));
+        }
+      }
+    }
   }
 </style>
