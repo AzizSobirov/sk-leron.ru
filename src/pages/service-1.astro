@@ -1,0 +1,52 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="Работа (внутренняя)">
+  <main>
+    <Blocks.Service
+      title="Газовые <br/> блочно-модульные <br/> котельные"
+      bg="services/1.png"
+      img="services/1-img.png"
+      img2="services/1-2-img.png"
+      class="img-2"
+    />
+    <Blocks.Stats secondary>
+      <Fragment slot="header">
+        <div class="stats__top">
+          <p>
+            <strong>Блочно-модульная котельная</strong> – это комплекс оборудования,
+            укомплектованный на заводе под особенности конкретного объекта. Модуль
+            имеет закрытую конструкцию со своими горелками, котлами, насосами и системой
+            управления. Блочно-модульные котельные требуют минимум времени на ввод
+            в эксплуатацию, предполагая:
+          </p>
+
+          <ul>
+            <li>— подготовку места установки;</li>
+            <li>— подключение к сетям коммуникаций;</li>
+            <li>— настройку и тестирование оборудования.</li>
+          </ul>
+
+          <p>
+            Мощность модульной котельной может составлять от 0,1 до 50 мВт, что
+            подходит для реализации как небольших, так и крупных проектов. Это
+            может быть только ГВС, отопительное оборудование, паровое
+            обеспечение или система, выполняющая несколько задач одновременно.
+          </p>
+        </div>
+      </Fragment>
+    </Blocks.Stats>
+    <Blocks.Types />
+    <Blocks.Cycle />
+    <Blocks.Stages />
+    <Blocks.Partners />
+    <Blocks.Letters />
+    <Blocks.Certificates />
+    <Blocks.Catalog />
+    <Blocks.Complated />
+    <Blocks.Faq />
+    <Blocks.Application />
+  </main>
+</App>

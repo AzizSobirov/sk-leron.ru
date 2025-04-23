@@ -1,0 +1,227 @@
+---
+import { Section, H2, H3, P, BgImg, Image, Icon, Button } from "ui";
+
+interface Props {
+  class?: string;
+  title: string;
+  img?: string;
+  img2?: string;
+  bg: string;
+}
+
+const { class: classname, title, img, img2, bg } = Astro.props;
+---
+
+<!-- Service -->
+<Section name="service">
+  <Fragment slot="header">
+    <BgImg src={bg} />
+
+    {
+      img && (
+        <div class="service__img">
+          <Image src={img} />
+          {img2 && <Image class:list={classname} src={img2} />}
+        </div>
+      )
+    }
+  </Fragment>
+
+  <div class="service__text">
+    <div class="service__text-title" set:html={title} />
+    <H3 class="service__text-subtitle">
+      Разработаем <span>технико-экономическое предложение</span>
+      <span class="font-regular">за 48 часов</span>
+    </H3>
+    <Button data-modal="callback">
+      <span>Получить</span>
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+          ><g clip-path="url(#prefix__clip0_66_1580)"
+            ><g clip-path="url(#prefix__clip1_66_1580)"
+              ><mask
+                id="prefix__a"
+                style="mask-type:luminance"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="24"
+                height="24"
+                ><path d="M23.2.88H.7v22.5h22.5V.88z" fill="#fff"></path></mask
+              ><g mask="url(#prefix__a)" fill="#333"
+                ><path
+                  d="M11.95.88C5.747.88.7 5.926.7 12.13c0 6.203 5.047 11.25 11.25 11.25 6.204 0 11.25-5.047 11.25-11.25C23.2 5.926 18.154.88 11.95.88zm0 21.562c-5.686 0-10.312-4.626-10.312-10.312 0-5.686 4.626-10.313 10.312-10.313 5.686 0 10.313 4.627 10.313 10.313 0 5.686-4.627 10.312-10.313 10.312z"
+                ></path><path
+                  d="M16.645 13.551l.034-3.783a.468.468 0 10-.938-.007l-.034 3.787c0 .248-.016.61-.039.987a1.38 1.38 0 01-.137.516L8.634 8.154a.469.469 0 00-.663.663l6.897 6.897a1.382 1.382 0 01-.517.137c-.376.023-.738.04-.99.04l-3.784.033a.47.47 0 00.008.938l3.779-.034c.262 0 .646-.016 1.043-.04a2.342 2.342 0 002.196-2.196c.024-.398.041-.782.041-1.04l.002-.001z"
+                ></path></g
+              ></g
+            ></g
+          ><defs
+            ><clipPath id="prefix__clip0_66_1580"
+              ><path
+                fill="#fff"
+                transform="translate(.7 .88)"
+                d="M0 0h22.5v22.5H0z"></path></clipPath
+            ><clipPath id="prefix__clip1_66_1580"
+              ><path
+                fill="#fff"
+                transform="translate(.7 .88)"
+                d="M0 0h22.5v22.5H0z"></path></clipPath
+            ></defs
+          ></svg
+        >
+      </span>
+    </Button>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .service {
+    position: relative;
+    padding: 0 !important;
+    height: rem(870);
+
+    @include media("3xl") {
+      height: rem(700);
+    }
+    @include media("lg") {
+      height: rem(650);
+    }
+    @include media("sm") {
+      height: rem(500);
+
+      .bg-img {
+        img {
+          object-position: right;
+        }
+      }
+    }
+
+    .container {
+      height: 100%;
+      justify-content: center;
+
+      @include media("sm") {
+        padding-top: rem(120);
+        justify-content: flex-start;
+      }
+    }
+
+    &__text {
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(30);
+
+      @include media("sm") {
+        gap: rem(20);
+      }
+
+      &-title {
+        margin-bottom: rem(15);
+        font-size: rem(60);
+        font-weight: 900;
+        font-family: var(--font-secondary);
+        text-transform: uppercase;
+
+        @include media("3xl") {
+          font-size: rem(48);
+        }
+        @include media("lg") {
+          font-size: rem(40);
+        }
+        @include media("md") {
+          font-size: rem(30);
+        }
+        @include media("sm") {
+          margin-bottom: 0;
+          font-size: rem(28);
+        }
+      }
+
+      &-subtitle {
+        max-width: rem(482);
+      }
+    }
+
+    &__img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      z-index: -1;
+      transform: translateX(-25%);
+      height: 95%;
+      user-select: none;
+
+      @include media("lg") {
+        left: auto;
+        right: 0;
+        transform: translateX(0);
+        height: 90%;
+      }
+      @include media("sm") {
+        right: 0%;
+        height: 70%;
+      }
+
+      img {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+        object-position: bottom;
+      }
+
+      .img-2 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translate(15%, 18%);
+        z-index: -1;
+        min-width: 150%;
+        height: auto;
+
+        @include media("2xl") {
+          min-width: 125%;
+        }
+      }
+
+      .img-3 {
+        position: absolute;
+        bottom: 0;
+        left: 30%;
+        z-index: -1;
+        height: auto;
+        min-width: 130%;
+
+        @include media("3xl") {
+          left: auto;
+          right: -30%;
+          min-width: 120% !important;
+        }
+        @include media("lg") {
+          display: none;
+        }
+      }
+
+      .img-4 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translate(-15%, 24%);
+        z-index: -1;
+        min-width: 180%;
+        height: auto;
+
+        @include media("3xl") {
+          min-width: 160%;
+        }
+        @include media("2xl") {
+          min-width: 125%;
+        }
+      }
+    }
+  }
+</style>
