@@ -61,14 +61,9 @@ const Tag = href ? "a" : "button";
       background: var(--primary);
       border-radius: 9999px;
       gap: rem(10);
-      --icon-size: #{rem(22)};
 
       @include media("xs") {
         padding: rem(14) rem(25);
-
-        .icon {
-          display: none;
-        }
       }
 
       &::before {
@@ -104,15 +99,32 @@ const Tag = href ? "a" : "button";
         }
       }
 
-      .icon {
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(10);
+      }
+
+      span::after {
+        content: "";
+        width: rem(22);
+        height: rem(22);
+        display: block;
+        background: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_122_2730)"><g clip-path="url(%23clip1_122_2730)"><mask id="mask0_122_2730" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><path d="M23.1992 0.880859H0.699219V23.3809H23.1992V0.880859Z" fill="white"/></mask><g mask="url(%23mask0_122_2730)"><path d="M11.9492 0.880859C5.74578 0.880859 0.699219 5.92742 0.699219 12.1309C0.699219 18.3343 5.74578 23.3809 11.9492 23.3809C18.1527 23.3809 23.1992 18.3343 23.1992 12.1309C23.1992 5.92742 18.1527 0.880859 11.9492 0.880859ZM11.9492 22.4434C6.26328 22.4434 1.63672 17.8168 1.63672 12.1309C1.63672 6.44492 6.26328 1.81836 11.9492 1.81836C17.6352 1.81836 22.2617 6.44492 22.2617 12.1309C22.2617 17.8168 17.6352 22.4434 11.9492 22.4434Z" fill="%23333333"/><path d="M16.6435 13.5535L16.6773 9.77027C16.6792 9.51108 16.4718 9.29961 16.2125 9.29762C15.9534 9.29564 15.7419 9.50313 15.7393 9.76299L15.7054 13.5502C15.7054 13.7982 15.6889 14.1607 15.6664 14.5373C15.6551 14.7223 15.6053 14.8952 15.5291 15.0537L8.63217 8.15675C8.4492 7.97379 8.15222 7.97379 7.96926 8.15675C7.78629 8.33972 7.78629 8.6367 7.96926 8.81966L14.8662 15.7166C14.7071 15.7921 14.5348 15.8426 14.3492 15.8532C13.9732 15.8763 13.6106 15.8929 13.3587 15.8929L9.57549 15.9268C9.3163 15.9287 9.10814 16.1409 9.11013 16.4001C9.11212 16.528 9.16382 16.6434 9.24801 16.7276C9.33353 16.8131 9.45285 16.8661 9.58278 16.8647L13.3621 16.831C13.6246 16.831 14.0084 16.8144 14.4055 16.7898C15.5861 16.719 16.5301 15.7749 16.601 14.5943C16.6249 14.1965 16.6421 13.8121 16.6421 13.5548L16.6435 13.5535Z" fill="%23333333"/></g></g></g><defs><clipPath id="clip0_122_2730"><rect width="22.5" height="22.5" fill="white" transform="translate(0.699219 0.880859)"/></clipPath><clipPath id="clip1_122_2730"><rect width="22.5" height="22.5" fill="white" transform="translate(0.699219 0.880859)"/></clipPath></defs></svg>')
+          center/contain no-repeat;
         transition: var(--transition-ease);
+
+        @include media("xs") {
+          display: none;
+        }
       }
 
       &:hover {
         background: var(--primary-light);
         animation-play-state: paused;
 
-        .icon {
+        span::after {
           transform: rotate(-45deg);
         }
       }
@@ -128,25 +140,37 @@ const Tag = href ? "a" : "button";
       border: rem(1) solid var(--primary);
       border-radius: 9999px;
       gap: rem(10);
-      --icon-size: #{rem(22)};
 
       @include media("xs") {
         padding: rem(14) rem(25);
-
-        .icon {
-          display: none;
-        }
       }
 
-      .icon {
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(10);
+      }
+
+      span::after {
+        content: "";
+        width: rem(22);
+        height: rem(22);
+        display: block;
+        background: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_122_2730)"><g clip-path="url(%23clip1_122_2730)"><mask id="mask0_122_2730" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><path d="M23.1992 0.880859H0.699219V23.3809H23.1992V0.880859Z" fill="white"/></mask><g mask="url(%23mask0_122_2730)"><path d="M11.9492 0.880859C5.74578 0.880859 0.699219 5.92742 0.699219 12.1309C0.699219 18.3343 5.74578 23.3809 11.9492 23.3809C18.1527 23.3809 23.1992 18.3343 23.1992 12.1309C23.1992 5.92742 18.1527 0.880859 11.9492 0.880859ZM11.9492 22.4434C6.26328 22.4434 1.63672 17.8168 1.63672 12.1309C1.63672 6.44492 6.26328 1.81836 11.9492 1.81836C17.6352 1.81836 22.2617 6.44492 22.2617 12.1309C22.2617 17.8168 17.6352 22.4434 11.9492 22.4434Z" fill="%23333333"/><path d="M16.6435 13.5535L16.6773 9.77027C16.6792 9.51108 16.4718 9.29961 16.2125 9.29762C15.9534 9.29564 15.7419 9.50313 15.7393 9.76299L15.7054 13.5502C15.7054 13.7982 15.6889 14.1607 15.6664 14.5373C15.6551 14.7223 15.6053 14.8952 15.5291 15.0537L8.63217 8.15675C8.4492 7.97379 8.15222 7.97379 7.96926 8.15675C7.78629 8.33972 7.78629 8.6367 7.96926 8.81966L14.8662 15.7166C14.7071 15.7921 14.5348 15.8426 14.3492 15.8532C13.9732 15.8763 13.6106 15.8929 13.3587 15.8929L9.57549 15.9268C9.3163 15.9287 9.10814 16.1409 9.11013 16.4001C9.11212 16.528 9.16382 16.6434 9.24801 16.7276C9.33353 16.8131 9.45285 16.8661 9.58278 16.8647L13.3621 16.831C13.6246 16.831 14.0084 16.8144 14.4055 16.7898C15.5861 16.719 16.5301 15.7749 16.601 14.5943C16.6249 14.1965 16.6421 13.8121 16.6421 13.5548L16.6435 13.5535Z" fill="%23333333"/></g></g></g><defs><clipPath id="clip0_122_2730"><rect width="22.5" height="22.5" fill="white" transform="translate(0.699219 0.880859)"/></clipPath><clipPath id="clip1_122_2730"><rect width="22.5" height="22.5" fill="white" transform="translate(0.699219 0.880859)"/></clipPath></defs></svg>')
+          center/contain no-repeat;
         transition: var(--transition-ease);
+
+        @include media("xs") {
+          display: none;
+        }
       }
 
       &:hover {
         background: var(--primary-light);
         animation-play-state: paused;
 
-        .icon {
+        span::after {
           transform: rotate(-45deg);
         }
       }

@@ -245,6 +245,31 @@ getAccordionParents.forEach((parent) => {
   });
 });
 
+// Catalog
+const catalog = document.querySelector(".catalog");
+if (catalog) {
+  const products = catalog.querySelectorAll(".catalog__list .catalog__item");
+  const btn = catalog.querySelector(".catalog__btn");
+
+  btn.addEventListener("click", () => {
+    btn.classList.toggle("active");
+
+    if (btn.classList.contains("active")) {
+      products.forEach((product) => {
+        product.classList.add("active");
+      });
+
+      btn.textContent = "Скрыть";
+    } else {
+      products.forEach((product) => {
+        product.classList.remove("active");
+      });
+
+      btn.textContent = "ПОКАЗАТЬ ЕЩЕ";
+    }
+  });
+}
+
 // Footer
 const currentYear = document.getElementById("current-year");
 if (currentYear) {

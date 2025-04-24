@@ -1,14 +1,232 @@
 ---
-import { Section,H2,H3,P, Image, Icon, Button } from "ui";
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 ---
 
 <!-- Catalog -->
-<Section name="catalog"> .catalog </Section>
+<Section name="catalog">
+  <H2>Каталог</H2>
+  <div class="catalog__list">
+    {
+      Array.from({ length: 12 }).map((_, index) => (
+        <div class="catalog__item">
+          <div class="catalog__item-content">
+            <div class="catalog__item-img">
+              <Image src="catalog/1.png" />
+            </div>
+            <div class="catalog__item-info">
+              <div class="catalog__item-title">Модульная котельная 100 КВт</div>
+              <ul class="catalog__item-list">
+                <li>
+                  <span>Срок изготовления</span>
+                  <strong>35-40 дней</strong>
+                </li>
+                <li>
+                  <span>Гарантийный срок</span>
+                  <strong>24 месяца</strong>
+                </li>
+              </ul>
+              <Button data-modal="callback">
+                <span>РАссчитать</span>
+              </Button>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <button class="catalog__btn"> ПОКАЗАТЬ ЕЩЕ </button>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .catalog {
     position: relative;
+    padding: rem(150) 0 rem(90);
+
+    @include media("3xl") {
+      padding: rem(140) 0 rem(80);
+    }
+    @include media("xl") {
+      padding: rem(120) 0 rem(80);
+    }
+    @include media("lg") {
+      padding: rem(50) 0;
+    }
+    @include media("sm") {
+      padding: rem(40) 0;
+    }
+
+    .container {
+      align-items: center;
+    }
+
+    &__list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: rem(20);
+
+      @include media("3xl") {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @include media("xl") {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include media("sm") {
+        grid-template-columns: 1fr;
+        gap: rem(15);
+      }
+    }
+
+    &__item {
+      position: relative;
+      padding: rem(1);
+      background: #cdcdcd;
+      --border-angle: #{rem(40)};
+      clip-path: polygon(
+        0 0,
+        calc(100% - var(--border-angle)) 0%,
+        100% var(--border-angle),
+        100% 100%,
+        var(--border-angle) 100%,
+        0 calc(100% - var(--border-angle))
+      );
+
+      &.active {
+        display: block !important;
+      }
+
+      &:nth-child(n + 9) {
+        display: none;
+      }
+
+      @include media("3xl") {
+        &:nth-child(n + 7) {
+          display: none;
+        }
+      }
+
+      @include media("xl") {
+        &:nth-child(n + 5) {
+          display: none;
+        }
+      }
+      @include media("xs") {
+        --border-angle: #{rem(30)};
+      }
+
+      &-content {
+        padding: rem(10) rem(34) rem(40);
+        width: 100%;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(35);
+        clip-path: inherit;
+
+        @include media("md") {
+          padding: rem(10) rem(20) rem(30);
+        }
+        @include media("sm") {
+          gap: rem(20);
+        }
+        @include media("xs") {
+          padding: rem(10) rem(15) rem(25);
+        }
+      }
+
+      &-img {
+        height: rem(200);
+        width: 100%;
+
+        @include media("sm") {
+          height: rem(160);
+        }
+
+        img {
+          width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      &-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(20);
+
+        @include media("xs") {
+          gap: rem(15);
+        }
+      }
+
+      &-title {
+        font-size: rem(22);
+        font-weight: 700;
+
+        @include media("lg") {
+          font-size: rem(20);
+        }
+      }
+
+      &-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(10);
+
+        li {
+          padding-bottom: rem(4);
+          width: 100%;
+          font-size: rem(18);
+          border-bottom: rem(1) dashed #cdcdcd;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: rem(10);
+
+          @include media("lg") {
+            font-size: rem(16);
+          }
+        }
+
+        strong {
+          color: var(--primary);
+        }
+      }
+
+      .btn {
+        margin-top: rem(10);
+
+        @include media("lg") {
+          margin-top: rem(5);
+        }
+      }
+    }
+
+    &__btn {
+      padding: rem(15) rem(24);
+      font-weight: 700;
+      text-transform: uppercase;
+      border: rem(1) solid var(--text-color);
+      border-radius: 9999px;
+      transition: var(--transition-ease);
+
+      @include media("xs") {
+        padding: rem(14) rem(24);
+        font-size: rem(14);
+      }
+
+      &:hover {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+      }
+    }
   }
 </style>
