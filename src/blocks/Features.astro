@@ -1,14 +1,275 @@
 ---
-import { Section,H2,H3,P, Image, Icon, Button } from "ui";
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 ---
 
 <!-- Features -->
-<Section name="features"> .features </Section>
+<Section name="features">
+  <div class="features__title">Особенности <br /> стационарных бмк</div>
+
+  <div class="features__list">
+    <div class="features__item">
+      <div class="features__item-index">
+        <Icon src="building.svg" />
+      </div>
+      <div class="features__item-text">
+        <div class="features__item-title">Фундаментальное размещение</div>
+        <p class="features__item-desc">
+          Котельная устанавливается на специально подготовленный фундамент, что
+          обеспечивает устойчивость и долговечность конструкции.
+        </p>
+      </div>
+    </div>
+
+    <div class="features__item">
+      <div class="features__item-index"><Icon src="project.svg" /></div>
+      <div class="features__item-text">
+        <div class="features__item-title">Гибкость в проектировании</div>
+        <p class="features__item-desc">
+          Системы разрабатываются индивидуально под объект, с возможностью
+          масштабирования, расширения и интеграции в существующие инженерные
+          сети.
+        </p>
+      </div>
+    </div>
+
+    <div class="features__item">
+      <div class="features__item-index"><Icon src="save-energy.svg" /></div>
+      <div class="features__item-text">
+        <div class="features__item-title">Повышенная мощность</div>
+        <p class="features__item-desc">
+          Стационарные БМК могут достигать мощности 100 мВт и более, что делает
+          их подходящими для теплоснабжения крупных жилых, промышленных и
+          коммерческих объектов.
+        </p>
+      </div>
+    </div>
+
+    <div class="features__item">
+      <div class="features__item-index"><Icon src="industry.svg" /></div>
+      <div class="features__item-text">
+        <div class="features__item-title">
+          Возможность размещения внутри зданий
+        </div>
+        <p class="features__item-desc">
+          Котельная может быть встроена в здание (например, на техническом этаже
+          или в пристройке), при соблюдении требований безопасности.
+        </p>
+      </div>
+    </div>
+
+    <div class="features__item">
+      <div class="features__item-index"><Icon src="thread.svg" /></div>
+      <div class="features__item-text">
+        <div class="features__item-title">Широкий функционал</div>
+        <p class="features__item-desc">
+          Система может обеспечивать отопление, горячее водоснабжение, подачу
+          пара или выполнять несколько задач одновременно.
+        </p>
+      </div>
+    </div>
+
+    <div class="features__item">
+      <div class="features__item-index"><Icon src="labor.svg" /></div>
+      <div class="features__item-text">
+        <div class="features__item-title">Повышенные требования к монтажу</div>
+        <p class="features__item-desc">
+          Требуется выполнение строительных работ, прокладка инженерных сетей,
+          утепление, вентиляция и соблюдение всех норм по технике безопасности.
+        </p>
+      </div>
+    </div>
+
+    <div class="features__item">
+      <div class="features__item-index"><Icon src="ai.svg" /></div>
+      <div class="features__item-text">
+        <div class="features__item-title">Высокая степень автоматизации</div>
+        <p class="features__item-desc">
+          Современные стационарные БМК оснащаются автоматикой управления,
+          системами диспетчеризации и удаленного контроля.
+        </p>
+      </div>
+    </div>
+
+    <div class="features__item">
+      <div class="features__item-index"><Icon src="time-management.svg" /></div>
+      <div class="features__item-text">
+        <div class="features__item-title">Долгий срок службы</div>
+        <p class="features__item-desc">
+          Благодаря стационарному размещению и капитальному исполнению
+          оборудование отличается повышенным ресурсом и стабильной работой на
+          протяжении десятилетий.
+        </p>
+      </div>
+    </div>
+  </div>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .features {
     position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(var(--content-width) + rem(200));
+      height: 100%;
+      background: #fff;
+      pointer-events: none;
+      z-index: -1;
+
+      @include media("3xl") {
+        width: calc(var(--content-width) + rem(160));
+      }
+    }
+
+    &__title {
+      position: relative;
+      width: 100%;
+      font-weight: 900;
+      font-size: rem(64);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+
+      @include media("xl") {
+        font-size: rem(48);
+      }
+      @include media("lg") {
+        font-size: rem(36);
+      }
+      @include media("sm") {
+        font-size: rem(24);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -10%;
+        transform: translateY(-40%);
+        z-index: -1;
+        height: 100%;
+        min-height: rem(40);
+        min-width: rem(220);
+        width: 40%;
+        background: url("/assets/img/lines-2.svg") center/contain no-repeat;
+
+        @include media("lg") {
+          transform: translateY(-10%);
+        }
+      }
+    }
+
+    &__list {
+      margin-top: rem(10);
+      margin-bottom: rem(80);
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(40) rem(20);
+
+      @include media("xl") {
+        margin-bottom: rem(60);
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include media("lg") {
+        margin-top: 0;
+        margin-bottom: rem(40);
+        grid-template-columns: 1fr;
+        gap: rem(20);
+      }
+      @include media("sm") {
+        margin-bottom: rem(20);
+      }
+    }
+
+    &__item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: rem(20);
+
+      @include media("xs") {
+        gap: rem(15);
+      }
+
+      &-index {
+        min-width: rem(110);
+        width: rem(110);
+        height: rem(110);
+        background: linear-gradient(141deg, #f1c40f 0%, #f1930f 100%);
+        --border-angle: #{rem(20)};
+        --icon-size: #{rem(80)};
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--border-angle)) 0%,
+          100% var(--border-angle),
+          100% 100%,
+          var(--border-angle) 100%,
+          0 calc(100% - var(--border-angle))
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include media("xl") {
+          min-width: rem(100);
+          width: rem(100);
+          height: rem(100);
+          --icon-size: #{rem(70)};
+        }
+        @include media("lg") {
+          min-width: rem(80);
+          width: rem(80);
+          height: rem(80);
+          --icon-size: #{rem(50)};
+        }
+        @include media("sm") {
+          min-width: rem(60);
+          width: rem(60);
+          height: rem(60);
+          --border-angle: #{rem(15)};
+          --icon-size: #{rem(30)};
+        }
+      }
+
+      &-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(10);
+      }
+
+      &-title {
+        font-weight: 700;
+        font-size: rem(22);
+        color: #000;
+
+        @include media("3xl") {
+          font-size: rem(20);
+        }
+        @include media("sm") {
+          font-size: rem(18);
+          letter-spacing: unset;
+        }
+      }
+
+      &-desc {
+        font-weight: 400;
+        font-size: 18px;
+        color: #000;
+
+        @include media("3xl") {
+          font-size: rem(16);
+        }
+        @include media("sm") {
+          font-size: rem(14);
+        }
+      }
+    }
   }
 </style>

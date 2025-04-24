@@ -1,14 +1,262 @@
 ---
-import { Section,H2,H3,P, Image, Icon, Button } from "ui";
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 ---
 
 <!-- Implement -->
-<Section name="implement"> .implement </Section>
+<Section name="implement">
+  <div class="implement__title">
+    Реализуем системы <br /> водоснабжения любой <br /> сложности
+  </div>
+
+  <div class="implement__list">
+    <div class="implement__item">
+      <a href="#" class="implement__item-link"></a>
+      <Image class="implement__item-img" src="implement/1.png" />
+      <div class="implement__item-btn">
+        <span>Водоснабжение частного дома</span>
+      </div>
+    </div>
+
+    <div class="implement__item">
+      <a href="#" class="implement__item-link"></a>
+      <Image class="implement__item-img" src="implement/2.png" />
+      <div class="implement__item-btn">
+        <span>Водоснабжение <br /> многоквартирного дома</span>
+      </div>
+    </div>
+
+    <div class="implement__item">
+      <a href="#" class="implement__item-link"></a>
+      <Image class="implement__item-img" src="implement/3.png" />
+      <div class="implement__item-btn">
+        <span>Водоснабжение предприятий</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="implement__text">
+    <strong>Компания «Лерон»</strong> предлагает профессиональные решения в сфере
+    водоснабжения для частных домов, многоквартирных зданий и промышленных объектов.
+    Мы реализуем проекты любой сложности — от автономных систем в загородных домах
+    до комплексных инженерных решений для предприятий. Наши специалисты учитывают
+    все особенности объекта, подбирают оптимальное оборудование и обеспечивают качественный
+    монтаж, что гарантирует надежную и бесперебойную работу системы.
+    <br /><br />
+    Мы используем только проверенные технологии и материалы, соблюдаем строительные
+    нормы и обеспечиваем полное сопровождение проекта — от первичной консультации
+    до ввода в эксплуатацию. Благодаря индивидуальному подходу, технической грамотности
+    и опыту, мы создаем системы водоснабжения, которые эффективно работают и служат
+    долгие годы.
+  </div>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .implement {
     position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(rem(600), 0);
+      width: rem(410);
+      height: rem(410);
+      background: url('data:image/svg+xml,<svg width="409" height="405" viewBox="0 0 409 405" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M191.487 0V103.825H162.937V88.6868C110.503 106.153 72.6324 155.64 72.6324 213.858C72.6324 221.62 73.4095 229.384 74.5744 236.758L89.7231 228.025L103.899 252.672L82.732 264.897L28.16 296.335L14.1763 304.68L0 280.034L18.2557 269.554C13.0114 251.895 10.0982 233.264 10.0982 214.052C10.0982 120.902 75.5455 43.2757 162.937 24.0634V0H191.487Z" fill="%23E84C3D" /><path d="M217.514 0V103.825H246.063V88.6868C298.497 106.153 336.368 155.64 336.368 213.858C336.368 221.62 335.591 229.384 334.426 236.758L319.277 228.025L305.101 252.672L326.268 264.897L380.84 296.335L394.824 304.68L409 280.034L390.745 269.554C395.989 251.895 398.902 233.264 398.902 214.052C398.902 120.902 333.455 43.2757 246.063 24.0634V0H217.514Z" fill="%23F1C40F" /><path d="M381.153 328.934L291.172 277.023L276.898 301.728L290.018 309.298C248.663 345.941 186.84 353.971 136.385 324.861C129.657 320.98 123.318 316.427 117.51 311.731L132.652 302.989L118.381 278.396L97.2001 290.602L42.6691 322.109L28.4453 330.037L42.7166 354.63L60.9262 344.071C73.609 357.439 88.2986 369.274 104.95 378.88C185.679 425.456 285.677 407.631 346.024 341.609L366.879 353.64L381.153 328.934Z" fill="%233598DB" /></svg>')
+        center/contain no-repeat;
+
+      @include media("3xl") {
+        display: none;
+      }
+    }
+
+    &__title {
+      position: relative;
+      width: 100%;
+      font-weight: 900;
+      font-size: rem(64);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+
+      @include media("xl") {
+        font-size: rem(48);
+      }
+      @include media("lg") {
+        font-size: rem(36);
+      }
+      @include media("sm") {
+        font-size: rem(24);
+
+        br {
+          display: none;
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -10%;
+        transform: translateY(-10%);
+        z-index: -1;
+        height: 100%;
+        min-height: rem(40);
+        min-width: rem(220);
+        width: 40%;
+        background: url("/assets/img/lines-2.svg") center/contain no-repeat;
+      }
+    }
+
+    &__list {
+      position: relative;
+      padding: rem(20) 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(60) rem(20);
+
+      @include media("xl") {
+        grid-template-columns: repeat(2, 1fr);
+        gap: rem(30) rem(40);
+      }
+      @include media("md") {
+        grid-template-columns: 1fr;
+        gap: rem(20);
+      }
+      @include media("sm") {
+        padding: rem(10) 0;
+        gap: rem(15);
+      }
+    }
+
+    &__item {
+      position: relative;
+      padding: rem(30) rem(45);
+      width: 100%;
+      height: rem(335);
+      --border-angle: #{rem(40)};
+
+      @include media("lg") {
+        height: rem(260);
+      }
+      @include media("md") {
+        height: rem(350);
+      }
+      @include media("xs") {
+        padding: rem(25) rem(30);
+        height: rem(220);
+        --border-angle: #{rem(30)};
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: 3;
+        transform: translate(-50%, -50%);
+        width: rem(28);
+        height: 80%;
+        background: url("/assets/img/lines-y.svg") center/contain no-repeat;
+      }
+
+      &-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--border-angle)) 0%,
+          100% var(--border-angle),
+          100% 100%,
+          var(--border-angle) 100%,
+          0 calc(100% - var(--border-angle))
+        );
+
+        &::before {
+          content: "";
+          @include center;
+          width: 100%;
+          height: 100%;
+          background: var(--primary);
+          clip-path: inherit;
+        }
+
+        &::after {
+          content: "";
+          @include center;
+          width: calc(100% - rem(4));
+          height: calc(100% - rem(4));
+          background: #262626;
+          clip-path: inherit;
+          pointer-events: none;
+        }
+      }
+
+      &-img {
+        position: absolute;
+        bottom: rem(2);
+        left: rem(2);
+        z-index: 2;
+        width: calc(100% - rem(4));
+        height: auto;
+        max-height: calc(100% - rem(4));
+        object-fit: cover;
+        pointer-events: none;
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--border-angle)) 0%,
+          100% var(--border-angle),
+          100% 100%,
+          var(--border-angle) 100%,
+          0 calc(100% - var(--border-angle))
+        );
+      }
+
+      &-btn {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: rem(25);
+        pointer-events: none;
+
+        @include media("xs") {
+          gap: rem(15);
+        }
+
+        span {
+          color: var(--primary);
+          font-weight: 700;
+          font-size: rem(24);
+
+          @include media("3xl") {
+            font-size: rem(20);
+          }
+          @include media("xs") {
+            font-size: rem(18);
+          }
+        }
+      }
+    }
+
+    &__text {
+      width: 100%;
+      max-width: rem(1280);
+      font-size: rem(22);
+      color: #000;
+
+      @include media("xl") {
+        font-size: rem(20);
+      }
+      @include media("sm") {
+        font-size: rem(16);
+      }
+    }
   }
 </style>
